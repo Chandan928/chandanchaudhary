@@ -8,6 +8,7 @@ const services = [
   { label: "GEO",             href: "/services/geo" },
   { label: "Local SEO",       href: "/services/local-seo" },
   { label: "AI Automation",   href: "/services/ai-automation" },
+  { label: "Technical SEO",  href: "/services/technical-seo" },
 ];
 
 const company = [
@@ -35,30 +36,61 @@ export function Footer() {
           {/* Column 1 — Brand */}
           <div>
             <Link href="/" aria-label="Chandan Chaudhary — Home">
-              <p
+              <div
                 style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "1.125rem",
-                  fontWeight: 600,
-                  color: "var(--color-text-primary)",
-                  marginBottom: "4px",
-                }}
-              >
-                Chandan Chaudhary
-              </p>
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "0.6rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "var(--color-accent)",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.625rem",
                   marginBottom: "1rem",
                 }}
               >
-                SEO · AI · Growth
-              </p>
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 56 56"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <rect width="56" height="56" rx="12" fill="#0F0F1A" />
+                  <text
+                    x="28"
+                    y="34"
+                    fontSize="20"
+                    fontWeight="700"
+                    fill="white"
+                    textAnchor="middle"
+                    fontFamily="Sora, system-ui, sans-serif"
+                  >
+                    CC
+                  </text>
+                  <circle cx="42" cy="14" r="5" fill="#8075FF" />
+                </svg>
+                <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.2 }}>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "1rem",
+                      fontWeight: 600,
+                      color: "#FFFFFF",
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    Chandan Chaudhary
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "0.6rem",
+                      fontWeight: 700,
+                      color: "var(--color-accent)",
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    SEO · AI · Growth
+                  </span>
+                </div>
+              </div>
             </Link>
 
             <p

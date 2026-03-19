@@ -623,6 +623,27 @@
     to   { transform: translateY(100%); opacity: 0; }
   }
 
+  @keyframes typingDot {
+    0%, 60%, 100% { opacity: 0.2; transform: translateY(0); }
+    30% { opacity: 1; transform: translateY(-3px); }
+  }
+
+  .typing-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-text-muted);
+    display: inline-block;
+    animation: typingDot 1.2s ease-in-out infinite;
+  }
+
+  .typing-dot:nth-child(2) { animation-delay: 0.15s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .typing-dot { animation: none; opacity: 0.5; }
+  }
+
   @keyframes timelinePulse {
     0%   { box-shadow: 0 0 0 0 rgba(108, 99, 255, 0.5); }
     70%  { box-shadow: 0 0 0 8px rgba(108, 99, 255, 0); }
@@ -642,4 +663,78 @@
   .animate-delay-300 { animation-delay: 300ms; }
   .animate-delay-400 { animation-delay: 400ms; }
   .animate-delay-500 { animation-delay: 500ms; }
+
+  /* GEO page — process phase connector arrow */
+  .process-arrow {
+    width: 24px;
+    height: 2px;
+    background: var(--color-border);
+    position: relative;
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .process-arrow::after {
+    content: '';
+    position: absolute;
+    right: -7px;
+    top: -5px;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 8px solid var(--color-border);
+  }
+
+  /* AI Automation page — pipeline node animations */
+  @keyframes nodePulse {
+    0%, 100% { border-color: var(--color-border); box-shadow: none; }
+    50% { border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-subtle); }
+  }
+
+  .node-running {
+    border: 1px solid var(--color-border);
+    animation: nodePulse 2s ease infinite;
+  }
+
+  @keyframes nodePulseSvg {
+    0%, 100% { stroke: var(--color-border); }
+    50% { stroke: var(--color-accent); filter: drop-shadow(0 0 3px rgba(108,99,255,0.4)); }
+  }
+
+  .node-running-svg {
+    stroke: var(--color-border);
+    animation: nodePulseSvg 2s ease infinite;
+  }
+
+  /* Technical SEO page — terminal cursor blink */
+  @keyframes terminalBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .terminal-cursor {
+    display: inline-block;
+    width: 7px;
+    height: 0.85em;
+    vertical-align: text-bottom;
+    border-right: 2px solid rgba(108,99,255,0.8);
+    animation: terminalBlink 1s step-end infinite;
+  }
+
+  /* GEO page — pillar zigzag: always row on desktop, column on mobile */
+  .pillar-row {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .pillar-row.reverse {
+    flex-direction: row-reverse;
+  }
+  @media (max-width: 767px) {
+    .pillar-row,
+    .pillar-row.reverse {
+      flex-direction: column;
+    }
+  }
 }

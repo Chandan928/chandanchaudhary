@@ -1,0 +1,6 @@
+<svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+  <rect width="56" height="56" rx="12" fill="#0F0F1A"/>
+  <text x="28" y="34" font-size="20" font-weight="700" fill="white"
+    text-anchor="middle" font-family="Sora, system-ui, sans-serif">CC</text>
+  <circle cx="42" cy="14" r="5" fill="#8075FF"/>
+</svg>
