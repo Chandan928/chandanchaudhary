@@ -1,16 +1,17 @@
 // JSON-LD Schema templates for structured data
+import { siteConfig } from "./metadata";
 
 export function personSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Chandan Chaudhary",
+    name: siteConfig.name,
     jobTitle: "SEO Consultant",
     description:
       "SEO Consultant with 9+ years of experience. Expert in GEO, AEO, Semantic SEO, Technical SEO, Local SEO and AI Automation.",
-    url: "https://chandanchaudhary.com",
-    email: "ckchandan928@gmail.com",
-    telephone: "+919014997870",
+    url: siteConfig.url,
+    email: siteConfig.email,
+    telephone: siteConfig.phone,
     image: "https://chandanchaudhary.com/chandan-chaudhary.jpg",
     address: {
       "@type": "PostalAddress",

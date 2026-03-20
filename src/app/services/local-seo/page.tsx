@@ -15,12 +15,11 @@ import {
 } from "lucide-react";
 import { buildMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { faqSchema } from "@/lib/schema";
+import { faqSchema, serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Local SEO Services — Dominate Local Search | Chandan Chaudhary",
-  description:
-    "Local SEO consultant helping businesses dominate Google Maps and local pack results. GBP optimization, citation building, review strategy for Hyderabad and India.",
+  title: "Local SEO Services — Dominate Local Search",
+  description: "Local SEO consultant helping businesses dominate Google Maps and local pack results. GBP optimization, citations, and review strategy.",
   path: "/services/local-seo",
 });
 
@@ -224,6 +223,7 @@ function LocationGridSVG({ maxWidth = 280 }: { maxWidth?: number }) {
 export default function LocalSeoPage() {
   return (
     <>
+      <JsonLd schema={serviceSchema({ name: 'Local SEO Services', description: 'Local SEO consulting for Google Maps and local pack dominance. GBP optimization, citations, and review strategy.', url: 'https://chandanchaudhary.com/services/local-seo' })} />
       <JsonLd schema={faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a })))} />
 
       {/* ── Section 1: Hero ── */}
@@ -253,11 +253,10 @@ export default function LocalSeoPage() {
 
         <div className="container">
           <div
-            style={{ display: "flex", alignItems: "flex-start", gap: "4rem" }}
-            className="max-lg:flex-col"
+                        className="hero-grid"
           >
             {/* Left — 55% */}
-            <div style={{ flex: "0 0 55%", maxWidth: "55%" }} className="max-lg:max-w-full">
+            <div >
               <p className="section-label">Local SEO</p>
               <h1 style={{ marginBottom: "1.25rem" }}>
                 Dominate local search.{" "}
@@ -284,7 +283,7 @@ export default function LocalSeoPage() {
               >
                 Local SEO systems built for service businesses and SaaS with geo-targeted go-to-market.
               </p>
-              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "1.5rem" }}>
+              <div className="btn-group" style={{ marginBottom: "1.5rem" }}>
                 <Link href="/contact" className="btn btn-primary">
                   Book a Local SEO Call
                 </Link>
@@ -599,12 +598,7 @@ export default function LocalSeoPage() {
           </div>
 
           <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "1.25rem",
-            }}
-            className="max-md:grid-cols-1"
+            className="grid-3"
           >
             {problems.map((p) => (
               <article
@@ -667,11 +661,10 @@ export default function LocalSeoPage() {
       >
         <div className="container">
           <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
+                        className="grid-2"
           >
             {/* Left — pillars (60%) */}
-            <div style={{ flex: "0 0 58%" }} className="max-lg:w-full">
+            <div >
               <p className="section-label">How I approach Local SEO</p>
               <h2 style={{ marginBottom: "1rem", maxWidth: "52ch" }}>
                 A local search system that makes you impossible to miss.
@@ -794,11 +787,10 @@ export default function LocalSeoPage() {
       >
         <div className="container">
           <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
+                        className="grid-2"
           >
             {/* Left — 36% */}
-            <div style={{ flex: "0 0 36%" }} className="max-lg:w-full">
+            <div >
               <p className="section-label">Scope of work</p>
               <h2 style={{ marginBottom: "1rem", maxWidth: "52ch" }}>
                 Everything in your Local SEO system.
@@ -858,7 +850,7 @@ export default function LocalSeoPage() {
             </div>
 
             {/* Right — 2-col checklist */}
-            <div style={{ flex: 1 }} className="max-lg:w-full">
+            <div>
               <div
                 style={{
                   display: "grid",
@@ -1052,11 +1044,10 @@ export default function LocalSeoPage() {
       >
         <div className="container">
           <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
+                        className="grid-2"
           >
             {/* Left — 40% */}
-            <div style={{ flex: "0 0 40%" }} className="max-lg:w-full">
+            <div >
               <p className="section-label">Proven results</p>
               <h2 style={{ marginBottom: "1.5rem", maxWidth: "52ch" }}>
                 What local SEO impact looks like.
@@ -1065,7 +1056,7 @@ export default function LocalSeoPage() {
             </div>
 
             {/* Right — result rows */}
-            <div style={{ flex: 1 }} className="max-lg:w-full">
+            <div>
               {[
                 {
                   metric: "Top 3",
@@ -1148,12 +1139,7 @@ export default function LocalSeoPage() {
           </div>
 
           <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "1.5rem",
-            }}
-            className="max-md:grid-cols-1"
+            className="fit-grid"
           >
             {/* Right for */}
             <div
@@ -1238,8 +1224,7 @@ export default function LocalSeoPage() {
       >
         <div className="container">
           <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
+                        className="grid-2"
           >
             {/* Left — decorative */}
             <div
@@ -1302,7 +1287,7 @@ export default function LocalSeoPage() {
             </div>
 
             {/* Right — FAQ items */}
-            <div style={{ flex: 1 }} className="max-lg:w-full">
+            <div>
               <p className="section-label">FAQ</p>
               <h2 style={{ marginBottom: "2rem", maxWidth: "52ch" }}>
                 Common questions about Local SEO.
@@ -1392,7 +1377,7 @@ export default function LocalSeoPage() {
             >
               Your next client is searching locally right now. Let&apos;s make sure they find you first.
             </p>
-            <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>
+            <div className="btn-group" style={{ justifyContent: "center", marginBottom: "1.5rem" }}>
               <Link href="/contact" className="btn btn-primary">
                 Book a Local SEO Call
               </Link>

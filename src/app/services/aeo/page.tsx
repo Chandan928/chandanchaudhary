@@ -10,11 +10,12 @@ import {
 } from "lucide-react";
 import { buildMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { faqSchema } from "@/lib/schema";
+import { faqSchema, serviceSchema } from "@/lib/schema";
 import { EntityWeb } from "@/components/graphics/EntityWeb";
 
 export const metadata: Metadata = buildMetadata({
-  title: "AEO — Answer Engine Optimization",
+  title: "AEO — Answer Engine Optimization for SaaS",
+  description: "Optimize your SaaS brand for ChatGPT, Perplexity, and Gemini. AEO consultant helping SaaS companies appear in AI-generated answers.",
   path: "/services/aeo",
 });
 
@@ -154,6 +155,7 @@ const faqs = [
 export default function AeoPage() {
   return (
     <>
+      <JsonLd schema={serviceSchema({ name: 'AEO — Answer Engine Optimization', description: 'Optimize your SaaS brand for ChatGPT, Perplexity, and Gemini. AEO consulting for AI-generated answer visibility.', url: 'https://chandanchaudhary.com/services/aeo' })} />
       <JsonLd schema={faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a })))} />
 
       {/* ── Section 1: Hero ── */}
@@ -181,12 +183,9 @@ export default function AeoPage() {
         />
 
         <div className="container">
-          <div
-            style={{ display: "flex", alignItems: "flex-start", gap: "3.5rem" }}
-            className="max-lg:flex-col"
-          >
+          <div className="hero-grid">
             {/* Left 55% */}
-            <div style={{ flex: "0 0 55%", maxWidth: "55%" }} className="max-lg:max-w-full">
+            <div>
               <p className="section-label">Answer Engine Optimization</p>
               <h1 style={{ marginBottom: "1.25rem" }}>
                 When buyers ask AI,{" "}
@@ -213,7 +212,7 @@ export default function AeoPage() {
               >
                 The same system I used to increase AI citations for SaaS brands across 5 categories.
               </p>
-              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "1.5rem" }}>
+              <div className="btn-group" style={{ marginBottom: "1.5rem" }}>
                 <Link href="/contact" className="btn btn-primary">
                   Get AEO Audit
                 </Link>
@@ -229,7 +228,7 @@ export default function AeoPage() {
             </div>
 
             {/* Right 45% — AI Chat Mockup */}
-            <div style={{ flex: "0 0 42%", maxWidth: "42%" }} className="max-lg:max-w-full max-lg:w-full">
+            <div>
               <div
                 style={{
                   backgroundColor: "var(--color-surface)",
@@ -399,10 +398,7 @@ export default function AeoPage() {
             </p>
           </div>
 
-          <div
-            style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem" }}
-            className="max-md:grid-cols-1"
-          >
+          <div className="grid-3">
             {problems.map((p) => (
               <article
                 key={p.platform}
@@ -477,20 +473,16 @@ export default function AeoPage() {
         style={{ backgroundColor: "var(--color-bg)" }}
       >
         <div className="container">
-          <div
-            style={{ display: "flex", gap: "4rem", alignItems: "center" }}
-            className="max-lg:flex-col"
-          >
+          <div className="grid-solution">
             {/* Left — Entity Web SVG */}
             <div
+              className="decorative-svg"
               style={{
-                flex: "0 0 38%",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 gap: "1.25rem",
               }}
-              className="max-lg:w-full"
             >
               <EntityWeb />
               <p
@@ -508,7 +500,7 @@ export default function AeoPage() {
             </div>
 
             {/* Right — 5 pillars */}
-            <div style={{ flex: 1 }} className="max-lg:w-full">
+            <div>
               <p className="section-label">The solution</p>
               <h2 style={{ marginBottom: "2.5rem", maxWidth: "52ch" }}>
                 Make your brand the answer AI gives.
@@ -580,12 +572,9 @@ export default function AeoPage() {
         style={{ backgroundColor: "var(--color-surface)" }}
       >
         <div className="container">
-          <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
-          >
+          <div className="grid-2">
             {/* Left 45% */}
-            <div style={{ flex: "0 0 40%" }} className="max-lg:w-full">
+            <div>
               <p className="section-label">Scope of work</p>
               <h2 style={{ marginBottom: "1rem", maxWidth: "52ch" }}>What AEO covers.</h2>
               <p
@@ -631,7 +620,7 @@ export default function AeoPage() {
             </div>
 
             {/* Right 55% */}
-            <div style={{ flex: 1 }} className="max-lg:w-full">
+            <div>
               <div
                 style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0" }}
                 className="max-sm:grid-cols-1"
@@ -794,10 +783,7 @@ export default function AeoPage() {
           </div>
 
           {/* 3 metric cards */}
-          <div
-            style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem", marginBottom: "2rem" }}
-            className="max-md:grid-cols-1"
-          >
+          <div className="grid-3" style={{ marginBottom: "2rem" }}>
             {proofCards.map((c) => (
               <article
                 key={c.platform}
@@ -868,10 +854,7 @@ export default function AeoPage() {
             <p className="section-label">Fit check</p>
             <h2>AEO is right for you if...</h2>
           </div>
-          <div
-            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}
-            className="max-md:grid-cols-1"
-          >
+          <div className="fit-grid">
             <div
               style={{
                 backgroundColor: "rgba(16,185,129,0.05)",
@@ -923,12 +906,9 @@ export default function AeoPage() {
         style={{ backgroundColor: "var(--color-surface)" }}
       >
         <div className="container">
-          <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
-          >
+          <div className="grid-2">
             {/* Left decorative */}
-            <div style={{ flex: "0 0 32%" }} className="max-lg:w-full">
+            <div className="desktop-only">
               <p
                 aria-hidden="true"
                 style={{
@@ -967,7 +947,7 @@ export default function AeoPage() {
             </div>
 
             {/* Right FAQ */}
-            <div style={{ flex: 1 }} className="max-lg:w-full">
+            <div>
               <p className="section-label">Common questions</p>
               <h2 style={{ marginBottom: "2rem", maxWidth: "52ch" }}>Questions about AEO.</h2>
               <div style={{ borderTop: "1px solid var(--color-border)" }}>

@@ -107,12 +107,7 @@ export function BlogFilter() {
 
       {/* Blog Grid */}
       <ul
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "1.5rem",
-        }}
-        className="max-lg:grid-cols-2 max-sm:grid-cols-1"
+        className="grid-3"
         role="list"
       >
         {filtered.map((post) => {

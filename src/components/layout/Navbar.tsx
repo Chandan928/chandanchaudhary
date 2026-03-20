@@ -72,6 +72,7 @@ export function Navbar() {
       role="banner"
       style={{
         backgroundColor: scrolled ? "var(--color-surface)" : "transparent",
+        WebkitBackdropFilter: scrolled ? "blur(12px)" : undefined,
         backdropFilter: scrolled ? "blur(12px)" : undefined,
         borderBottom: scrolled ? "1px solid var(--color-border)" : undefined,
         boxShadow: scrolled ? "var(--shadow-sm)" : undefined,
@@ -89,31 +90,17 @@ export function Navbar() {
           <div style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
             {/* CC Icon */}
             <div style={{ flexShrink: 0 }}>
-              <svg
-                width="36"
-                height="36"
-                viewBox="0 0 56 56"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <rect width="56" height="56" rx="12" fill="#0F0F1A" />
-                <text
-                  x="28"
-                  y="34"
-                  fontSize="20"
-                  fontWeight="700"
-                  fill="white"
-                  textAnchor="middle"
-                  fontFamily="Sora, system-ui, sans-serif"
-                >
-                  CC
-                </text>
+              <svg width="38" height="38" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="56" height="56" rx="12" fill="#1A1A2E" />
+                <rect x="1.5" y="1.5" width="53" height="53" rx="11" fill="none" stroke="#6C63FF" strokeWidth="2" />
+                <text x="28" y="34" fontSize="20" fontWeight="700" fill="white" textAnchor="middle" fontFamily="Sora, system-ui, sans-serif">CC</text>
                 <circle cx="42" cy="14" r="5" fill="#8075FF" />
               </svg>
             </div>
             {/* Wordmark */}
             <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.2 }}>
               <span
+                className="navbar-name"
                 style={{
                   fontFamily: "var(--font-display)",
                   fontSize: "1.125rem",
@@ -126,6 +113,7 @@ export function Navbar() {
                 Chandan Chaudhary
               </span>
               <span
+                className="desktop-only"
                 style={{
                   fontFamily: "var(--font-body)",
                   fontSize: "0.6rem",
@@ -241,8 +229,8 @@ export function Navbar() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              width: "36px",
-              height: "36px",
+              width: "44px",
+              height: "44px",
               borderRadius: "var(--radius-md)",
               background: "transparent",
               border: "1px solid var(--color-border)",
@@ -282,8 +270,10 @@ export function Navbar() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              width: "36px",
-              height: "36px",
+              minWidth: "48px",
+              minHeight: "48px",
+              width: "48px",
+              height: "48px",
               borderRadius: "var(--radius-md)",
               background: "transparent",
               border: "none",
@@ -312,6 +302,7 @@ export function Navbar() {
           backgroundColor: "var(--color-bg)",
           borderTop: "1px solid var(--color-border)",
           transition: "opacity var(--ease), transform var(--ease)",
+          animation: isOpen ? "slideDown 200ms ease" : "none",
         }}
         className={cn(
           "md:hidden fixed inset-0 top-16 z-40",
@@ -327,8 +318,10 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 style={{
-                  display: "block",
+                  display: "flex",
+                  alignItems: "center",
                   padding: "0.75rem 1rem",
+                  minHeight: "52px",
                   fontFamily: "var(--font-body)",
                   fontSize: "1rem",
                   fontWeight: 500,
@@ -348,8 +341,10 @@ export function Navbar() {
               key={s.href}
               href={s.href}
               style={{
-                display: "block",
+                display: "flex",
+                alignItems: "center",
                 padding: "0.75rem 1rem",
+                minHeight: "52px",
                 fontFamily: "var(--font-body)",
                 fontSize: "1rem",
                 fontWeight: 500,
@@ -394,7 +389,8 @@ export function Navbar() {
 
           <Link
             href="/contact"
-            className="btn btn-primary w-full justify-center mt-2"
+            className="btn btn-primary mt-2"
+            style={{ width: "100%", justifyContent: "center" }}
           >
             Book a Free Call
           </Link>

@@ -6,8 +6,13 @@ const siteConfig = {
   description:
     "SEO Consultant with 9+ years of experience driving $5M+ ARR impact. Expert in GEO, AEO, Semantic SEO, Technical SEO & AI Automation. Based in Hyderabad, India.",
   url: "https://chandanchaudhary.com",
-  ogImage: "https://chandanchaudhary.com/og-image.jpg",
+  ogImage: "https://chandanchaudhary.com/og",
   author: "Chandan Chaudhary",
+  email: "ckchandan928@gmail.com",
+  phone: "+919014997870",
+  linkedin: "https://linkedin.com/in/chandan-chaudhary-seo",
+  location: "Hyderabad, India",
+  twitterHandle: "@chandanchaudhary",
   keywords: [
     "SEO Consultant India",
     "SEO Consultant Hyderabad",

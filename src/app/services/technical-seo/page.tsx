@@ -14,12 +14,11 @@ import {
 } from "lucide-react";
 import { buildMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { faqSchema } from "@/lib/schema";
+import { faqSchema, serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Technical SEO Services — Fix Your Foundation | Chandan Chaudhary",
-  description:
-    "Technical SEO consultant specializing in crawl optimization, Core Web Vitals, JavaScript SEO, and site architecture for SaaS and enterprise platforms.",
+  title: "Technical SEO Services — Fix Your Foundation",
+  description: "Technical SEO consultant for SaaS. Crawl optimization, Core Web Vitals, JavaScript SEO, and site architecture for complex tech stacks.",
   path: "/services/technical-seo",
 });
 
@@ -165,6 +164,7 @@ const faqs = [
 export default function TechnicalSeoPage() {
   return (
     <>
+      <JsonLd schema={serviceSchema({ name: 'Technical SEO Services', description: 'Technical SEO consulting for SaaS. Crawl optimization, Core Web Vitals, JavaScript SEO, and site architecture for complex tech stacks.', url: 'https://chandanchaudhary.com/services/technical-seo' })} />
       <JsonLd schema={faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a })))} />
 
       {/* ── Section 1: Hero ── */}
@@ -195,11 +195,10 @@ export default function TechnicalSeoPage() {
 
         <div className="container">
           <div
-            style={{ display: "flex", alignItems: "flex-start", gap: "4rem" }}
-            className="max-lg:flex-col"
+                        className="hero-grid"
           >
             {/* Left — 55% */}
-            <div style={{ flex: "0 0 55%", maxWidth: "55%" }} className="max-lg:max-w-full">
+            <div >
               <p className="section-label">Technical SEO</p>
               <h1 style={{ marginBottom: "1.25rem" }}>
                 Fix the foundation.{" "}
@@ -231,14 +230,7 @@ export default function TechnicalSeoPage() {
                 Technical SEO systems built for SaaS, EdTech, and enterprise platforms with complex
                 tech stacks.
               </p>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "1rem",
-                  flexWrap: "wrap",
-                  marginBottom: "1.5rem",
-                }}
-              >
+              <div className="btn-group" style={{ marginBottom: "1.5rem" }}>
                 <Link href="/contact" className="btn btn-primary">
                   Book a Technical SEO Audit
                 </Link>
@@ -433,12 +425,7 @@ export default function TechnicalSeoPage() {
           </div>
 
           <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "1.25rem",
-            }}
-            className="max-md:grid-cols-1"
+            className="grid-3"
           >
             {problems.map((p) => (
               <article
@@ -498,11 +485,10 @@ export default function TechnicalSeoPage() {
       >
         <div className="container">
           <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
+                        className="grid-2"
           >
             {/* Left — 60% pillar rows */}
-            <div style={{ flex: "0 0 58%" }} className="max-lg:w-full">
+            <div >
               <p className="section-label">How I approach Technical SEO</p>
               <h2 style={{ marginBottom: "0.75rem", maxWidth: "52ch" }}>
                 A technical foundation that makes everything else work harder.
@@ -553,7 +539,7 @@ export default function TechnicalSeoPage() {
                         aria-hidden="true"
                       />
                     </div>
-                    <div style={{ flex: 1 }}>
+                    <div>
                       <div
                         style={{
                           display: "flex",
@@ -719,11 +705,10 @@ export default function TechnicalSeoPage() {
       >
         <div className="container">
           <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
+                        className="grid-2"
           >
             {/* Left */}
-            <div style={{ flex: "0 0 36%" }} className="max-lg:w-full">
+            <div >
               <p className="section-label">Scope of work</p>
               <h2 style={{ marginBottom: "1.5rem", maxWidth: "52ch" }}>
                 What a technical SEO engagement covers.
@@ -776,7 +761,7 @@ export default function TechnicalSeoPage() {
             </div>
 
             {/* Right — checklist */}
-            <div style={{ flex: 1 }} className="max-lg:w-full">
+            <div>
               <div
                 style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0" }}
                 className="max-sm:grid-cols-1"
@@ -964,8 +949,7 @@ export default function TechnicalSeoPage() {
       >
         <div className="container">
           <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
+                        className="grid-2"
           >
             {/* Left */}
             <div
@@ -1169,8 +1153,7 @@ export default function TechnicalSeoPage() {
       >
         <div className="container">
           <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
+                        className="grid-2"
           >
             {/* Left — decorative */}
             <div style={{ flex: "0 0 32%", position: "relative" }} className="max-lg:w-full">
@@ -1225,7 +1208,7 @@ export default function TechnicalSeoPage() {
             </div>
 
             {/* Right — FAQ items */}
-            <div style={{ flex: 1 }} className="max-lg:w-full">
+            <div>
               <p className="section-label">Common questions</p>
               <h2 style={{ marginBottom: "2rem", maxWidth: "52ch" }}>
                 Questions about Technical SEO.

@@ -190,15 +190,8 @@ export default function AboutPage() {
         }}
       >
         <div className="container">
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "55fr 45fr",
-              gap: "4rem",
-              alignItems: "center",
-            }}
-            className="max-lg:grid-cols-1"
-          >
+          <div className="hero-grid">
+
             {/* Left (55%) */}
             <div>
               <p className="section-label">About</p>
@@ -383,13 +376,8 @@ export default function AboutPage() {
         style={{ backgroundColor: "var(--color-surface)" }}
       >
         <div className="container">
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-            }}
-            className="max-md:grid-cols-2 max-sm:grid-cols-1"
-          >
+          <div className="stats-row">
+
             {stats.map(({ Icon, number, label }, i) => (
               <div
                 key={label}
@@ -452,15 +440,8 @@ export default function AboutPage() {
         style={{ backgroundColor: "var(--color-bg)" }}
       >
         <div className="container">
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "65fr 35fr",
-              gap: "4rem",
-              alignItems: "flex-start",
-            }}
-            className="max-lg:grid-cols-1"
-          >
+          <div className="grid-2">
+
             {/* Left: story */}
             <div>
               <p className="section-label">My story</p>
@@ -639,12 +620,7 @@ export default function AboutPage() {
           </p>
 
           <ul
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              gap: "1.5rem",
-            }}
-            className="max-md:grid-cols-1"
+            className="grid-2"
             role="list"
           >
             {principles.map((p, i) => (
@@ -771,12 +747,7 @@ export default function AboutPage() {
           </h2>
 
           <ul
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              gap: "1rem",
-            }}
-            className="max-sm:grid-cols-1"
+            className="grid-2"
             role="list"
           >
             {credentials.map((cred) => (
@@ -843,12 +814,7 @@ export default function AboutPage() {
           <h2 style={{ marginBottom: "3rem" }}>What CEOs say.</h2>
 
           <ul
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "1.5rem",
-            }}
-            className="max-lg:grid-cols-1"
+            className="grid-3"
             role="list"
           >
             {testimonials.map((t) => (
@@ -983,9 +949,7 @@ export default function AboutPage() {
                 gap: "1.25rem",
               }}
             >
-              <div
-                style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}
-              >
+              <div className="btn-group" style={{ justifyContent: "center" }}>
                 <Link
                   href="/contact"
                   className="btn btn-primary"

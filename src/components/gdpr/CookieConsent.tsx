@@ -83,6 +83,7 @@ export function CookieConsent() {
         zIndex: 100,
         backgroundColor: "var(--color-surface)",
         borderTop: "1px solid var(--color-border)",
+        WebkitBackdropFilter: "blur(12px)",
         backdropFilter: "blur(12px)",
         padding: "1rem 1.5rem",
         display: "flex",

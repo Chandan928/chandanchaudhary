@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail, MapPin, Linkedin } from "lucide-react";
 import { CookiePreferencesLink } from "@/components/gdpr/CookiePreferencesLink";
+import { siteConfig } from "@/lib/metadata";
 
 const services = [
   { label: "SEO Consulting",  href: "/services/seo" },
@@ -30,8 +31,8 @@ export function Footer() {
       }}
     >
       {/* Main Footer */}
-      <div className="container" style={{ paddingTop: "4rem", paddingBottom: "2rem" }}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+      <div className="container" style={{ paddingTop: "4rem" }}>
+        <div className="footer-grid">
 
           {/* Column 1 — Brand */}
           <div>
@@ -44,25 +45,10 @@ export function Footer() {
                   marginBottom: "1rem",
                 }}
               >
-                <svg
-                  width="36"
-                  height="36"
-                  viewBox="0 0 56 56"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <rect width="56" height="56" rx="12" fill="#0F0F1A" />
-                  <text
-                    x="28"
-                    y="34"
-                    fontSize="20"
-                    fontWeight="700"
-                    fill="white"
-                    textAnchor="middle"
-                    fontFamily="Sora, system-ui, sans-serif"
-                  >
-                    CC
-                  </text>
+                <svg width="40" height="40" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style={{ flexShrink: 0 }}>
+                  <rect width="56" height="56" rx="12" fill="#1A1A2E" />
+                  <rect x="1.5" y="1.5" width="53" height="53" rx="11" fill="none" stroke="#6C63FF" strokeWidth="2" />
+                  <text x="28" y="34" fontSize="20" fontWeight="700" fill="white" textAnchor="middle" fontFamily="Sora, system-ui, sans-serif">CC</text>
                   <circle cx="42" cy="14" r="5" fill="#8075FF" />
                 </svg>
                 <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.2 }}>
@@ -71,7 +57,7 @@ export function Footer() {
                       fontFamily: "var(--font-display)",
                       fontSize: "1rem",
                       fontWeight: 600,
-                      color: "#FFFFFF",
+                      color: "var(--color-text-primary)",
                       letterSpacing: "-0.02em",
                     }}
                   >
@@ -108,12 +94,12 @@ export function Footer() {
 
             <address className="not-italic flex flex-col gap-3">
               <a
-                href="mailto:ckchandan928@gmail.com"
+                href={`mailto:${siteConfig.email}`}
                 className="footer-email"
                 aria-label="Email Chandan"
               >
                 <Mail size={14} aria-hidden="true" style={{ color: "var(--color-text-muted)", flexShrink: 0 }} />
-                ckchandan928@gmail.com
+                {siteConfig.email}
               </a>
               <span
                 style={{
@@ -126,13 +112,13 @@ export function Footer() {
                 }}
               >
                 <MapPin size={14} aria-hidden="true" style={{ flexShrink: 0 }} />
-                Hyderabad, India
+                {siteConfig.location}
               </span>
             </address>
           </div>
 
           {/* Column 2 — Services */}
-          <div>
+          <nav aria-label="Services navigation">
             <p className="section-label">Services</p>
             <ul className="flex flex-col gap-3" role="list">
               {services.map((s) => (
@@ -143,10 +129,10 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Column 3 — Company */}
-          <div>
+          <nav aria-label="Company navigation">
             <p className="section-label">Company</p>
             <ul className="flex flex-col gap-3" role="list">
               {company.map((l) => (
@@ -157,7 +143,7 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Column 4 — CTA Box */}
           <div
@@ -198,9 +184,8 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="divider" />
       <div className="container" style={{ paddingBlock: "1.25rem" }}>
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="footer-bottom">
           <p
             style={{
               fontFamily: "var(--font-body)",
@@ -222,7 +207,7 @@ export function Footer() {
             <CookiePreferencesLink />
             <span style={{ color: "var(--color-text-muted)", fontSize: "0.8125rem" }}>·</span>
             <a
-              href="https://linkedin.com/in/chandan-chaudhary-seo"
+              href={siteConfig.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="footer-link-social"

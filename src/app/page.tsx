@@ -13,7 +13,7 @@ import {
   XCircle,
   CheckCircle2,
 } from "lucide-react";
-import { buildMetadata } from "@/lib/metadata";
+import { buildMetadata, siteConfig } from "@/lib/metadata";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { personSchema, websiteSchema } from "@/lib/schema";
 import { LogoStrip } from "@/components/sections/LogoStrip";
@@ -224,15 +224,10 @@ export default function HomePage() {
 
         <div className="container">
           {/* Flex row: content left, card right */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "flex-start",
-              gap: "3rem",
-            }}
-          >
+          <div className="hero-grid">
+
             {/* Left: hero content */}
-            <div style={{ maxWidth: "680px", flex: 1 }}>
+            <div>
               <p className="section-label">SEO · GEO · AEO · AI Automation · Hyderabad, India</p>
 
               <h1 style={{ marginBottom: "1.5rem" }}>
@@ -255,7 +250,7 @@ export default function HomePage() {
                 turn organic into your most predictable acquisition channel.
               </p>
 
-              <div className="flex flex-wrap gap-4" style={{ marginBottom: "1.25rem" }}>
+              <div className="btn-group" style={{ marginBottom: "1.25rem" }}>
                 <Link href="/contact" className="btn btn-primary">
                   Book a Free Strategy Call
                 </Link>
@@ -277,6 +272,7 @@ export default function HomePage() {
 
               {/* Stats row */}
               <div
+                className="hero-stats-grid"
                 style={{
                   borderTop: "1px solid var(--color-border)",
                   paddingTop: "2rem",
@@ -304,94 +300,248 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right: floating availability card (hidden on small screens) */}
-            <div className="max-lg:hidden" style={{ flexShrink: 0 }}>
-              <div
-                style={{
-                  backgroundColor: "var(--color-surface)",
-                  border: "1px solid var(--color-border)",
-                  borderRadius: "var(--radius-lg)",
-                  padding: "1.25rem",
-                  width: "220px",
-                  transform: "rotate(-2deg)",
-                  boxShadow: "var(--shadow-md)",
-                }}
-              >
-                {/* Availability indicator */}
-                <div
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    marginBottom: "1rem",
-                  }}
-                >
-                  <span
-                    aria-hidden="true"
-                    style={{
-                      width: "8px",
-                      height: "8px",
-                      borderRadius: "50%",
-                      backgroundColor: "#22c55e",
-                      flexShrink: 0,
-                      display: "inline-block",
-                    }}
-                  />
-                  <span
-                    style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "0.75rem",
-                      color: "var(--color-text-secondary)",
-                    }}
-                  >
-                    Available for new clients
-                  </span>
+            {/* Right: GSC-style performance card (hidden on small screens) */}
+            <div className="max-lg:hidden">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem', width: '100%' }}>
+
+                {/* Main GSC Card */}
+                <div style={{
+                  background: 'var(--color-surface)',
+                  border: '1px solid var(--color-border)',
+                  borderRadius: 'var(--radius-xl)',
+                  overflow: 'hidden',
+                }}>
+
+                  {/* Card Header */}
+                  <div style={{
+                    padding: '0.875rem 1.25rem',
+                    borderBottom: '1px solid var(--color-border)',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <div style={{
+                        width: '8px', height: '8px', borderRadius: '50%',
+                        background: 'rgba(16,185,129,0.9)',
+                        boxShadow: '0 0 6px rgba(16,185,129,0.5)',
+                      }} />
+                      <span style={{
+                        fontSize: '0.75rem', fontWeight: 600,
+                        color: 'var(--color-text-primary)',
+                        fontFamily: 'var(--font-body)',
+                      }}>Organic Performance</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <span style={{ fontSize: '0.65rem', color: 'var(--color-text-muted)', fontFamily: 'var(--font-body)' }}>
+                        Last 12 months
+                      </span>
+                      <span style={{
+                        background: 'var(--color-accent-subtle)',
+                        border: '1px solid var(--color-accent-border)',
+                        borderRadius: '100px',
+                        padding: '2px 8px',
+                        fontSize: '0.65rem',
+                        color: 'var(--color-accent)',
+                        fontWeight: 600,
+                        fontFamily: 'var(--font-body)',
+                      }}>↑ 160%</span>
+                    </div>
+                  </div>
+
+                  {/* Big Metric Row */}
+                  <div style={{
+                    padding: '1rem 1.25rem 0.5rem',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'flex-end',
+                  }}>
+                    <div>
+                      <div style={{
+                        fontSize: '0.625rem', color: 'var(--color-text-muted)',
+                        fontFamily: 'var(--font-body)', textTransform: 'uppercase',
+                        letterSpacing: '0.08em', marginBottom: '4px',
+                      }}>Total ARR Impact</div>
+                      <div style={{
+                        fontSize: '2.25rem', fontWeight: 700,
+                        color: 'var(--color-text-primary)',
+                        fontFamily: 'var(--font-display)',
+                        lineHeight: 1, letterSpacing: '-0.03em',
+                      }}>
+                        $5M<span style={{ color: 'var(--color-accent)' }}>+</span>
+                      </div>
+                      <div style={{
+                        fontSize: '0.7rem', color: 'rgba(16,185,129,0.8)',
+                        marginTop: '4px', fontFamily: 'var(--font-body)',
+                      }}>↑ across 22+ brands · 9+ years</div>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      <div style={{
+                        fontSize: '0.625rem', color: 'var(--color-text-muted)',
+                        fontFamily: 'var(--font-body)', textTransform: 'uppercase',
+                        letterSpacing: '0.08em', marginBottom: '4px',
+                      }}>Avg Growth</div>
+                      <div style={{
+                        fontSize: '1.5rem', fontWeight: 700,
+                        color: 'var(--color-text-primary)',
+                        fontFamily: 'var(--font-display)', lineHeight: 1,
+                      }}>
+                        160<span style={{ color: 'var(--color-accent)' }}>%+</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Chart */}
+                  <div style={{ padding: '0.5rem 1.25rem 0.75rem' }}>
+                    <svg viewBox="0 0 340 90" className="decorative-svg" style={{ width: '100%', height: '90px' }} aria-hidden="true">
+                      <defs>
+                        <linearGradient id="chartGrad1" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="var(--color-accent)" stopOpacity="0.25"/>
+                          <stop offset="100%" stopColor="var(--color-accent)" stopOpacity="0"/>
+                        </linearGradient>
+                        <linearGradient id="chartGrad2" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="#10B981" stopOpacity="0.12"/>
+                          <stop offset="100%" stopColor="#10B981" stopOpacity="0"/>
+                        </linearGradient>
+                      </defs>
+                      {/* Grid lines */}
+                      <line x1="0" y1="22" x2="340" y2="22" stroke="var(--color-border)" strokeWidth="0.5" strokeDasharray="3 3"/>
+                      <line x1="0" y1="44" x2="340" y2="44" stroke="var(--color-border)" strokeWidth="0.5" strokeDasharray="3 3"/>
+                      <line x1="0" y1="66" x2="340" y2="66" stroke="var(--color-border)" strokeWidth="0.5" strokeDasharray="3 3"/>
+                      {/* Traffic area */}
+                      <path d="M0,75 C30,72 50,65 80,55 C110,45 130,38 160,28 C190,18 220,12 250,8 C275,5 305,4 340,2 L340,90 L0,90 Z" fill="url(#chartGrad1)"/>
+                      <path d="M0,75 C30,72 50,65 80,55 C110,45 130,38 160,28 C190,18 220,12 250,8 C275,5 305,4 340,2" fill="none" stroke="var(--color-accent)" strokeWidth="2"/>
+                      {/* Revenue area */}
+                      <path d="M0,82 C30,80 50,76 80,70 C110,64 130,58 160,50 C190,42 220,35 250,28 C275,23 305,18 340,14 L340,90 L0,90 Z" fill="url(#chartGrad2)"/>
+                      <path d="M0,82 C30,80 50,76 80,70 C110,64 130,58 160,50 C190,42 220,35 250,28 C275,23 305,18 340,14" fill="none" stroke="#10B981" strokeWidth="1.5" strokeDasharray="4 2"/>
+                      {/* End dots */}
+                      <circle cx="340" cy="2" r="4" fill="var(--color-accent)"/>
+                      <circle cx="340" cy="14" r="3" fill="#10B981"/>
+                      {/* Month labels */}
+                      <text x="0" y="88" fontSize="7" fill="var(--color-text-muted)" fontFamily="var(--font-body)">Jan</text>
+                      <text x="80" y="88" fontSize="7" fill="var(--color-text-muted)" fontFamily="var(--font-body)">Apr</text>
+                      <text x="160" y="88" fontSize="7" fill="var(--color-text-muted)" fontFamily="var(--font-body)">Jul</text>
+                      <text x="245" y="88" fontSize="7" fill="var(--color-text-muted)" fontFamily="var(--font-body)">Oct</text>
+                      <text x="320" y="88" fontSize="7" fill="var(--color-text-muted)" fontFamily="var(--font-body)">Dec</text>
+                    </svg>
+                    {/* Legend */}
+                    <div style={{ display: 'flex', gap: '1rem', marginTop: '4px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <div style={{ width: '12px', height: '2px', background: 'var(--color-accent)', borderRadius: '1px' }} />
+                        <span style={{ fontSize: '0.625rem', color: 'var(--color-text-muted)', fontFamily: 'var(--font-body)' }}>Organic traffic</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <div style={{ width: '12px', height: '2px', background: '#10B981', borderRadius: '1px' }} />
+                        <span style={{ fontSize: '0.625rem', color: 'var(--color-text-muted)', fontFamily: 'var(--font-body)' }}>Revenue impact</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Client Results */}
+                  <div style={{ borderTop: '1px solid var(--color-border)', padding: '0.875rem 1.25rem' }}>
+                    <div style={{
+                      fontSize: '0.6rem', color: 'var(--color-text-muted)',
+                      textTransform: 'uppercase', letterSpacing: '0.08em',
+                      marginBottom: '0.75rem', fontFamily: 'var(--font-body)',
+                    }}>Client results</div>
+
+                    {[
+                      { initial: 'K', name: 'Keka HR', metric: '$2.4M ARR', width: '100%' },
+                      { initial: 'V', name: 'Venngage', metric: '$1.25M ARR', width: '85%' },
+                      { initial: 'G', name: 'GrabOn', metric: '4.3M sessions', width: '72%' },
+                    ].map((client) => (
+                      <div key={client.name} style={{ marginBottom: '0.625rem' }}>
+                        <div style={{
+                          display: 'flex', justifyContent: 'space-between',
+                          alignItems: 'center', marginBottom: '4px',
+                        }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <div style={{
+                              width: '20px', height: '20px', borderRadius: '5px',
+                              background: 'var(--color-accent-subtle)',
+                              border: '1px solid var(--color-accent-border)',
+                              display: 'flex', alignItems: 'center', justifyContent: 'center',
+                              fontSize: '0.55rem', fontWeight: 700,
+                              color: 'var(--color-accent)', fontFamily: 'var(--font-body)',
+                            }}>{client.initial}</div>
+                            <span style={{
+                              fontSize: '0.75rem', color: 'var(--color-text-secondary)',
+                              fontFamily: 'var(--font-body)',
+                            }}>{client.name}</span>
+                          </div>
+                          <span style={{
+                            fontSize: '0.75rem', fontWeight: 600,
+                            color: 'var(--color-accent)', fontFamily: 'var(--font-display)',
+                          }}>{client.metric}</span>
+                        </div>
+                        <div style={{
+                          height: '3px', background: 'var(--color-accent-subtle)',
+                          borderRadius: '2px', overflow: 'hidden',
+                        }}>
+                          <div style={{
+                            width: client.width, height: '100%',
+                            background: 'linear-gradient(90deg, var(--color-accent), var(--color-accent-hover))',
+                            borderRadius: '2px',
+                          }} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
                 </div>
 
-                {/* Stat */}
-                <p
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontSize: "2rem",
-                    fontWeight: 600,
-                    color: "var(--color-text-primary)",
-                    lineHeight: 1,
-                    marginBottom: "0.25rem",
-                  }}
-                >
-                  $1.25M
-                </p>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.8125rem",
-                    color: "var(--color-text-muted)",
-                    marginBottom: "1rem",
-                  }}
-                >
-                  ARR generated for Venngage
-                </p>
+                {/* Bottom Two Mini Cards */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.625rem' }}>
+                  <div style={{
+                    background: 'var(--color-surface)',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: 'var(--radius-lg)',
+                    padding: '0.875rem 1rem',
+                  }}>
+                    <div style={{
+                      fontSize: '0.6rem', color: 'var(--color-text-muted)',
+                      textTransform: 'uppercase', letterSpacing: '0.08em',
+                      marginBottom: '6px', fontFamily: 'var(--font-body)',
+                    }}>Availability</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <div style={{
+                        width: '7px', height: '7px', borderRadius: '50%',
+                        background: 'rgba(16,185,129,0.9)',
+                        boxShadow: '0 0 5px rgba(16,185,129,0.4)',
+                      }} />
+                      <span style={{
+                        fontSize: '0.8125rem', fontWeight: 600,
+                        color: 'var(--color-text-primary)', fontFamily: 'var(--font-body)',
+                      }}>Open</span>
+                    </div>
+                    <div style={{
+                      fontSize: '0.65rem', color: 'var(--color-text-muted)',
+                      marginTop: '3px', fontFamily: 'var(--font-body)',
+                    }}>Limited spots Q2 2026</div>
+                  </div>
 
-                {/* Divider */}
-                <div
-                  aria-hidden="true"
-                  style={{
-                    height: "1px",
-                    backgroundColor: "var(--color-border)",
-                    marginBottom: "1rem",
-                  }}
-                />
+                  <div style={{
+                    background: 'var(--color-surface)',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: 'var(--radius-lg)',
+                    padding: '0.875rem 1rem',
+                  }}>
+                    <div style={{
+                      fontSize: '0.6rem', color: 'var(--color-text-muted)',
+                      textTransform: 'uppercase', letterSpacing: '0.08em',
+                      marginBottom: '6px', fontFamily: 'var(--font-body)',
+                    }}>Response time</div>
+                    <div style={{
+                      fontSize: '0.8125rem', fontWeight: 600,
+                      color: 'var(--color-text-primary)', fontFamily: 'var(--font-body)',
+                    }}>&lt; 24 hours</div>
+                    <div style={{
+                      fontSize: '0.65rem', color: 'var(--color-text-muted)',
+                      marginTop: '3px', fontFamily: 'var(--font-body)',
+                    }}>Business days</div>
+                  </div>
+                </div>
 
-                {/* Footer */}
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.75rem",
-                    color: "var(--color-text-muted)",
-                  }}
-                >
-                  9+ years · 22+ brands
-                </p>
               </div>
             </div>
           </div>
@@ -426,14 +576,7 @@ export default function HomePage() {
             Here&apos;s why.
           </p>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "3rem",
-            }}
-            className="max-md:grid-cols-1"
-          >
+          <div className="grid-2">
             {/* Problems */}
             <div className="flex flex-col gap-4" aria-label="The old way">
               <p
@@ -553,12 +696,7 @@ export default function HomePage() {
           </h2>
 
           <ul
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "1.5rem",
-            }}
-            className="max-lg:grid-cols-2 max-sm:grid-cols-1"
+            className="grid-3"
             role="list"
           >
             {services.map(({ Icon, name, description, href, badge }) => (
@@ -653,12 +791,7 @@ export default function HomePage() {
           </p>
 
           <ul
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "1.5rem",
-            }}
-            className="max-md:grid-cols-1"
+            className="grid-3"
             role="list"
           >
             {caseStudies.map((c) => (
@@ -740,12 +873,7 @@ export default function HomePage() {
           </h2>
 
           <ul
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "1.5rem",
-            }}
-            className="max-md:grid-cols-1"
+            className="grid-3"
             role="list"
           >
             {testimonials.map((t) => (
@@ -908,13 +1036,13 @@ export default function HomePage() {
             >
               or email{" "}
               <a
-                href="mailto:ckchandan928@gmail.com"
+                href={`mailto:${siteConfig.email}`}
                 style={{
                   color: "var(--color-accent)",
                   transition: "opacity var(--ease-fast)",
                 }}
               >
-                ckchandan928@gmail.com
+                {siteConfig.email}
               </a>
             </p>
           </div>

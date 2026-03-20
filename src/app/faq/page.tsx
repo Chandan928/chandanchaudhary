@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { HelpCircle } from "lucide-react";
-import { buildMetadata } from "@/lib/metadata";
+import { buildMetadata, siteConfig } from "@/lib/metadata";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqSchema } from "@/lib/schema";
 import { FaqAccordion } from "./FaqAccordion";
@@ -212,13 +212,13 @@ export default function FaqPage() {
             >
               or email{" "}
               <a
-                href="mailto:ckchandan928@gmail.com"
+                href={`mailto:${siteConfig.email}`}
                 style={{
                   color: "var(--color-accent)",
                   textDecoration: "none",
                 }}
               >
-                ckchandan928@gmail.com
+                {siteConfig.email}
               </a>
             </p>
           </div>

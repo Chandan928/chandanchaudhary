@@ -19,10 +19,11 @@ import {
 } from "lucide-react";
 import { buildMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { faqSchema } from "@/lib/schema";
+import { faqSchema, serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: "AI Automation for SEO",
+  title: "AI Automation for SEO — Build Faster SEO Systems",
+  description: "SEO automation consultant building AI-powered workflows with n8n, Make, and Python. Automate content briefs, keyword research, and reporting.",
   path: "/services/ai-automation",
 });
 
@@ -246,6 +247,7 @@ function AutomationFlowSvg({ maxWidth = "220px" }: { maxWidth?: string }) {
 export default function AiAutomationPage() {
   return (
     <>
+      <JsonLd schema={serviceSchema({ name: 'AI Automation for SEO', description: 'SEO automation consulting with AI-powered workflows using n8n, Make, and Python. Automate content briefs, keyword research, and reporting.', url: 'https://chandanchaudhary.com/services/ai-automation' })} />
       <JsonLd schema={faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a })))} />
 
       {/* ── Section 1: Hero ── */}
@@ -275,11 +277,10 @@ export default function AiAutomationPage() {
 
         <div className="container">
           <div
-            style={{ display: "flex", alignItems: "flex-start", gap: "4rem" }}
-            className="max-lg:flex-col"
+                        className="hero-grid"
           >
             {/* Left — 55% */}
-            <div style={{ flex: "0 0 55%", maxWidth: "55%" }} className="max-lg:max-w-full">
+            <div >
               <p className="section-label">AI Automation for SEO</p>
               <h1 style={{ marginBottom: "1.25rem" }}>
                 Stop doing manually what{" "}
@@ -306,7 +307,7 @@ export default function AiAutomationPage() {
               >
                 Automation systems built for SaaS SEO teams using n8n, Make, Python, and Claude API.
               </p>
-              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "1.5rem" }}>
+              <div className="btn-group" style={{ marginBottom: "1.5rem" }}>
                 <Link href="/contact" className="btn btn-primary">
                   Book an Automation Audit
                 </Link>
@@ -641,11 +642,10 @@ export default function AiAutomationPage() {
       >
         <div className="container">
           <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
+                        className="grid-2"
           >
             {/* Left — 60% */}
-            <div style={{ flex: "0 0 58%" }} className="max-lg:w-full">
+            <div >
               <p className="section-label">What I build</p>
               <h2 style={{ marginBottom: "0.875rem", maxWidth: "52ch" }}>
                 AI automation that multiplies your team&apos;s output.
@@ -692,7 +692,7 @@ export default function AiAutomationPage() {
                     >
                       <p.Icon size={16} style={{ color: "var(--color-accent)" }} aria-hidden="true" />
                     </div>
-                    <div style={{ flex: 1 }}>
+                    <div>
                       <div
                         style={{
                           display: "flex",
@@ -768,11 +768,10 @@ export default function AiAutomationPage() {
       >
         <div className="container">
           <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
+                        className="grid-2"
           >
             {/* Left */}
-            <div style={{ flex: "0 0 36%" }} className="max-lg:w-full">
+            <div >
               <p className="section-label">Scope of work</p>
               <h2 style={{ marginBottom: "1.5rem", maxWidth: "52ch" }}>
                 What I automate for your SEO team.
@@ -818,7 +817,7 @@ export default function AiAutomationPage() {
             </div>
 
             {/* Right — 2-col checklist */}
-            <div style={{ flex: 1 }} className="max-lg:w-full">
+            <div>
               <div
                 style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0" }}
                 className="max-sm:grid-cols-1"
@@ -998,8 +997,7 @@ export default function AiAutomationPage() {
       >
         <div className="container">
           <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
+                        className="grid-2"
           >
             {/* Left — SVG + heading */}
             <div
@@ -1170,8 +1168,7 @@ export default function AiAutomationPage() {
       >
         <div className="container">
           <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
+                        className="grid-2"
           >
             {/* Left — decorative */}
             <div
@@ -1227,7 +1224,7 @@ export default function AiAutomationPage() {
             </div>
 
             {/* Right — FAQ items */}
-            <div style={{ flex: 1 }} className="max-lg:w-full">
+            <div>
               <p className="section-label">Common questions</p>
               <h2 style={{ marginBottom: "2rem", maxWidth: "52ch" }}>
                 Questions about AI automation.

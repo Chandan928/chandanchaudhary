@@ -4,6 +4,8 @@ import { buildMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { blogPostSchema } from "@/lib/schema";
 
+export const revalidate = 3600 // Revalidate every hour
+
 const samplePost = {
   slug: "sample-post",
   title: "How I helped Venngage drive $1.25M ARR through SEO",
@@ -131,7 +133,7 @@ export default async function BlogPostPage({
       >
         <div
           className="container prose-custom"
-          style={{ maxWidth: "680px", marginInline: "auto" }}
+          style={{ maxWidth: "680px", marginInline: "auto", paddingInline: "var(--space-gutter)" }}
         >
           <p
             style={{

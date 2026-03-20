@@ -13,12 +13,13 @@ import {
   HelpCircle,
   ChevronRight,
 } from "lucide-react";
-import { buildMetadata } from "@/lib/metadata";
+import { buildMetadata, siteConfig } from "@/lib/metadata";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { faqSchema } from "@/lib/schema";
+import { faqSchema, serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
   title: "GEO — Generative Engine Optimization",
+  description: "Get cited by AI, not just ranked by Google. GEO consultant specializing in entity optimization, citation authority, and LLM visibility.",
   path: "/services/geo",
 });
 
@@ -172,6 +173,7 @@ function CitationNetworkSVG({ maxWidth = 320 }: { maxWidth?: number }) {
 export default function GeoPage() {
   return (
     <>
+      <JsonLd schema={serviceSchema({ name: 'GEO — Generative Engine Optimization', description: 'Get cited by AI, not just ranked by Google. GEO consulting for entity optimization, citation authority, and LLM visibility.', url: 'https://chandanchaudhary.com/services/geo' })} />
       <JsonLd schema={faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a })))} />
 
       {/* ── Section 1: Hero ── */}
@@ -201,11 +203,10 @@ export default function GeoPage() {
 
         <div className="container">
           <div
-            style={{ display: "flex", alignItems: "flex-start", gap: "4rem" }}
-            className="max-lg:flex-col"
+                        className="hero-grid"
           >
             {/* Left — 55% */}
-            <div style={{ flex: "0 0 55%", maxWidth: "55%" }} className="max-lg:max-w-full">
+            <div >
               <p className="section-label">Generative Engine Optimization</p>
               <h1 style={{ marginBottom: "1.25rem" }}>
                 Get cited by AI.{" "}
@@ -232,7 +233,7 @@ export default function GeoPage() {
               >
                 Applied GEO frameworks across SaaS, EdTech, and enterprise brands.
               </p>
-              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "1.5rem" }}>
+              <div className="btn-group" style={{ marginBottom: "1.5rem" }}>
                 <Link href="/contact" className="btn btn-primary">
                   Book a GEO Strategy Call
                 </Link>
@@ -483,12 +484,7 @@ export default function GeoPage() {
           </div>
 
           <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "1.25rem",
-            }}
-            className="max-md:grid-cols-1"
+            className="grid-3"
           >
             {/* Card 1 */}
             <article className="card" style={{ padding: "1.5rem" }}>
@@ -647,8 +643,7 @@ export default function GeoPage() {
           </div>
 
           <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
+                        className="grid-2"
           >
             {/* Left — Citation Network SVG */}
             <div
@@ -677,7 +672,7 @@ export default function GeoPage() {
             </div>
 
             {/* Right — 5 pillars as left-border rows */}
-            <div style={{ flex: 1 }} className="max-lg:w-full">
+            <div>
               {pillars.map((pillar) => (
                 <div
                   key={pillar.num}
@@ -758,11 +753,10 @@ export default function GeoPage() {
       >
         <div className="container">
           <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
+                        className="grid-2"
           >
             {/* Left — 40% */}
-            <div style={{ flex: "0 0 36%" }} className="max-lg:w-full">
+            <div >
               <p className="section-label">Scope of work</p>
               <h2 style={{ marginBottom: "1rem", maxWidth: "52ch" }}>
                 Everything to build your GEO presence.
@@ -822,7 +816,7 @@ export default function GeoPage() {
             </div>
 
             {/* Right — 60%, 2-col grid */}
-            <div style={{ flex: 1 }} className="max-lg:w-full">
+            <div>
               <div
                 style={{
                   display: "grid",
@@ -1016,11 +1010,10 @@ export default function GeoPage() {
       >
         <div className="container">
           <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
+                        className="grid-2"
           >
             {/* Left — 45% */}
-            <div style={{ flex: "0 0 40%" }} className="max-lg:w-full">
+            <div >
               <p className="section-label">Proven results</p>
               <h2 style={{ marginBottom: "1.5rem", maxWidth: "52ch" }}>
                 GEO impact in numbers.
@@ -1029,7 +1022,7 @@ export default function GeoPage() {
             </div>
 
             {/* Right — 55%: result rows */}
-            <div style={{ flex: 1 }} className="max-lg:w-full">
+            <div>
               {[
                 {
                   metric: "3X",
@@ -1112,12 +1105,7 @@ export default function GeoPage() {
           </div>
 
           <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "1.5rem",
-            }}
-            className="max-md:grid-cols-1"
+            className="fit-grid"
           >
             {/* Right for */}
             <div
@@ -1202,8 +1190,7 @@ export default function GeoPage() {
       >
         <div className="container">
           <div
-            style={{ display: "flex", gap: "4rem", alignItems: "flex-start" }}
-            className="max-lg:flex-col"
+                        className="grid-2"
           >
             {/* Left — decorative */}
             <div
@@ -1266,7 +1253,7 @@ export default function GeoPage() {
             </div>
 
             {/* Right — FAQ items */}
-            <div style={{ flex: 1 }} className="max-lg:w-full">
+            <div>
               <p className="section-label">FAQ</p>
               <h2 style={{ marginBottom: "2rem", maxWidth: "52ch" }}>
                 Common questions about GEO.
@@ -1365,8 +1352,8 @@ export default function GeoPage() {
             </Link>
             <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "var(--color-text-muted)", marginBottom: "1.5rem" }}>
               or email{" "}
-              <a href="mailto:ckchandan928@gmail.com" style={{ color: "var(--color-accent)" }}>
-                ckchandan928@gmail.com
+              <a href={`mailto:${siteConfig.email}`} style={{ color: "var(--color-accent)" }}>
+                {siteConfig.email}
               </a>
             </p>
             {/* Trust signals */}

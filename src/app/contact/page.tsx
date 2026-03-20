@@ -1,418 +1,1127 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { siteConfig } from "@/lib/metadata";
 import {
-  Mail,
-  Linkedin,
-  MapPin,
-  Clock,
-  User,
-  Building2,
+  CheckCircle2,
+  AlertCircle,
+  ArrowRight,
+  Send,
+  Lock,
   MessageSquare,
+  DollarSign,
+  Clock,
+  Linkedin,
+  CheckCircle,
 } from "lucide-react";
-import { buildMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Contact",
-  path: "/contact",
-});
+interface FormData {
+  name: string;
+  email: string;
+  company: string;
+  stage: string;
+  challenge: string;
+  source: string;
+}
 
-const steps = [
+interface FormErrors {
+  name?: string;
+  email?: string;
+  challenge?: string;
+  submit?: string;
+}
+
+const emptyForm: FormData = {
+  name: "",
+  email: "",
+  company: "",
+  stage: "",
+  challenge: "",
+  source: "",
+};
+
+function validate(data: FormData): FormErrors {
+  const errors: FormErrors = {};
+  if (!data.name.trim() || data.name.trim().length < 2) {
+    errors.name = "Please enter your full name (min 2 characters)";
+  }
+  if (!data.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+    errors.email = "Please enter a valid work email address";
+  }
+  if (!data.challenge.trim() || data.challenge.trim().length < 20) {
+    errors.challenge = "Please describe your challenge in at least 20 characters";
+  }
+  return errors;
+}
+
+const microTestimonials = [
   {
-    number: "1",
-    title: "You'll get a calendar link",
-    desc: "Pick a 30-minute slot that works for you.",
+    quote: "Turned SEO into our most predictable acquisition channel.",
+    initials: "NV",
+    name: "Nikunj Verma",
+    company: "CEO · CutShort",
   },
   {
-    number: "2",
-    title: "We'll talk about your situation",
-    desc: "Where you are, where you want to go, what's blocking you.",
+    quote: "$1.25M ARR in a year. Every action tied to revenue.",
+    initials: "EW",
+    name: "Eugene Woo",
+    company: "CEO · Venngage",
   },
   {
-    number: "3",
-    title: "I'll give you my honest take",
-    desc: "Whether that's working together or pointing you in the right direction.",
+    quote: "14K organic sessions in under a year, from zero.",
+    initials: "NP",
+    name: "Neeraj Parikh",
+    company: "CEO · SP Tech USA",
+  },
+];
+
+const callCoverageItems = [
+  "Your current SEO performance and biggest gaps",
+  "What's realistically achievable in 90 days",
+  "Which service engagement fits your situation",
+  "Clear next steps — whether we work together or not",
+];
+
+const pricingRows = [
+  { tier: "Clarity Sprint", price: "$1,500 one-time" },
+  { tier: "SEO Foundation", price: "$2,000 / month" },
+  { tier: "Revenue Partner", price: "$2,500 / month" },
+];
+
+const objections = [
+  {
+    Icon: MessageSquare,
+    title: "Not sure if you're ready?",
+    body: "That's exactly what the call is for. We'll figure out if and how I can help — even if you're still 3 months away from being ready to hire.",
+  },
+  {
+    Icon: DollarSign,
+    title: "Worried about budget?",
+    body: "The Clarity Sprint starts at $1,500 one-time. No monthly commitment, no long contract. Just a clear 90-day SEO roadmap you can execute yourself or with me.",
+  },
+  {
+    Icon: Clock,
+    title: "Too busy right now?",
+    body: "30 minutes. That's all it takes. I'll do the work before the call so our time together is focused and valuable from minute one.",
   },
 ];
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState<FormData>(emptyForm);
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [submitted, setSubmitted] = useState(false);
+  const [shaking, setShaking] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  function handleChange(
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const newErrors = validate(formData);
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      setShaking(true);
+      setTimeout(() => setShaking(false), 500);
+      setTimeout(() => {
+        const firstKey = Object.keys(newErrors)[0];
+        const el = document.getElementById(firstKey);
+        el?.scrollIntoView({ behavior: "smooth", block: "center" });
+        el?.focus();
+      }, 50);
+      return;
+    }
+    setIsSubmitting(true);
+    setErrors({});
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message");
+      }
+      setSubmitted(true);
+    } catch (error) {
+      setErrors({
+        submit:
+          error instanceof Error
+            ? error.message
+            : "Failed to send message. Please try again or email ${siteConfig.email} directly.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <>
-      {/* ── Hero ── */}
+      {/* ── SECTION 1 — HERO ── */}
       <section
-        aria-label="Contact page header"
+        aria-label="Contact hero"
         style={{
-          backgroundColor: "var(--color-surface)",
+          backgroundColor: "var(--color-bg)",
           borderBottom: "1px solid var(--color-border)",
-          paddingTop: "8rem",
-          paddingBottom: "5rem",
+          paddingBlock: "4rem",
         }}
       >
-        <div className="container" style={{ maxWidth: "800px" }}>
-          <p className="section-label">Get in touch</p>
-          <h1 style={{ marginBottom: "1.25rem" }}>
-            Let&apos;s talk about
-            <br />your organic growth.
-          </h1>
-          <p
-            style={{
-              fontSize: "1.125rem",
-              color: "var(--color-text-secondary)",
-              lineHeight: 1.75,
-              maxWidth: "560px",
-            }}
-          >
-            I take on a limited number of SaaS clients each quarter. If you&apos;re
-            building an organic acquisition channel and want it done right — this is
-            the right first step.
-          </p>
-        </div>
-      </section>
-
-      {/* ── Two Column Layout ── */}
-      <section aria-label="Contact form and details" className="section">
         <div className="container">
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "3fr 2fr",
-              gap: "4rem",
-              alignItems: "start",
-            }}
-            className="max-md:grid-cols-1 max-md:gap-12"
-          >
-            {/* Left — Contact Form */}
-            <div style={{ position: "relative", overflow: "hidden" }}>
-              <h2
+          <div className="hero-grid">
+            {/* Left 55% */}
+            <div>
+              <p className="section-label">Let&apos;s work together</p>
+              <h1 style={{ marginBottom: "1.25rem" }}>
+                Your organic channel should drive revenue. Let&apos;s build
+                that.
+              </h1>
+              <p
                 style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "1.125rem",
-                  fontWeight: 600,
-                  color: "var(--color-text-primary)",
+                  fontSize: "1.0625rem",
+                  color: "var(--color-text-secondary)",
+                  lineHeight: 1.75,
+                  maxWidth: "520px",
+                }}
+              >
+                Book a free 30-minute strategy call. I&apos;ll review your
+                current SEO situation live and tell you exactly what I&apos;d
+                prioritize in your position. No pitch. No pressure. Just
+                clarity.
+              </p>
+
+              {/* Trust signals */}
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "1.5rem",
+                  marginTop: "1.5rem",
                   marginBottom: "2rem",
                 }}
               >
-                Send a message
-              </h2>
+                {[
+                  "Free 30-minute call",
+                  "Response within 24 hours",
+                  "No long-term contract required",
+                ].map((signal) => (
+                  <div
+                    key={signal}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.375rem",
+                    }}
+                  >
+                    <CheckCircle2
+                      size={14}
+                      aria-hidden="true"
+                      style={{ color: "var(--color-accent)", flexShrink: 0 }}
+                    />
+                    <span
+                      style={{
+                        fontSize: "0.8125rem",
+                        color: "var(--color-text-secondary)",
+                      }}
+                    >
+                      {signal}
+                    </span>
+                  </div>
+                ))}
+              </div>
 
-              <form
-                aria-label="Contact form"
-                style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}
+              <a
+                href="/contact#form"
+                className="btn btn-primary"
+                style={{ fontSize: "1.0625rem", padding: "1rem 2rem" }}
               >
-                {/* Name */}
-                <div>
-                  <label htmlFor="name" className="form-label">
-                    Your name <span aria-hidden="true" style={{ color: "var(--color-accent)" }}>*</span>
-                  </label>
-                  <div style={{ position: "relative" }}>
-                    <User
-                      size={16}
-                      aria-hidden="true"
-                      style={{
-                        position: "absolute",
-                        left: "0.875rem",
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                        pointerEvents: "none",
-                        zIndex: 1,
-                        color: "var(--color-text-muted)",
-                      }}
-                    />
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      autoComplete="name"
-                      className="form-input"
-                      placeholder="Raj Sharma"
-                      style={{ paddingLeft: "2.75rem" }}
-                    />
-                  </div>
-                </div>
+                Book a Free Strategy Call →
+              </a>
+              <p
+                style={{
+                  fontSize: "0.8125rem",
+                  color: "var(--color-text-muted)",
+                  marginTop: "0.875rem",
+                }}
+              >
+                or scroll down to send a message
+              </p>
+            </div>
 
-                {/* Email */}
-                <div>
-                  <label htmlFor="email" className="form-label">
-                    Your email <span aria-hidden="true" style={{ color: "var(--color-accent)" }}>*</span>
-                  </label>
-                  <div style={{ position: "relative" }}>
-                    <Mail
-                      size={16}
-                      aria-hidden="true"
-                      style={{
-                        position: "absolute",
-                        left: "0.875rem",
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                        pointerEvents: "none",
-                        zIndex: 1,
-                        color: "var(--color-text-muted)",
-                      }}
-                    />
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      autoComplete="email"
-                      className="form-input"
-                      placeholder="raj@yourcompany.com"
-                      style={{ paddingLeft: "2.75rem" }}
-                    />
-                  </div>
-                </div>
-
-                {/* Company */}
-                <div>
-                  <label htmlFor="company" className="form-label">
-                    Your company / website
-                  </label>
-                  <div style={{ position: "relative" }}>
-                    <Building2
-                      size={16}
-                      aria-hidden="true"
-                      style={{
-                        position: "absolute",
-                        left: "0.875rem",
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                        pointerEvents: "none",
-                        zIndex: 1,
-                        color: "var(--color-text-muted)",
-                      }}
-                    />
-                    <input
-                      id="company"
-                      name="company"
-                      type="text"
-                      className="form-input"
-                      placeholder="yourcompany.com"
-                      style={{ paddingLeft: "2.75rem" }}
-                    />
-                  </div>
-                </div>
-
-                {/* SaaS Stage */}
-                <div>
-                  <label htmlFor="stage" className="form-label">
-                    What stage is your SaaS?
-                  </label>
-                  <select id="stage" name="stage" className="form-select">
-                    <option value="">Select a stage</option>
-                    <option value="pre-revenue">Pre-revenue</option>
-                    <option value="0-100k">$0–100K ARR</option>
-                    <option value="100k-1m">$100K–1M ARR</option>
-                    <option value="1m+">$1M+ ARR</option>
-                  </select>
-                </div>
-
-                {/* Challenge */}
-                <div>
-                  <label htmlFor="challenge" className="form-label">
-                    What&apos;s your biggest organic growth challenge right now?
-                  </label>
-                  <div style={{ position: "relative" }}>
-                    <MessageSquare
-                      size={16}
-                      aria-hidden="true"
-                      style={{
-                        position: "absolute",
-                        left: "0.875rem",
-                        top: "0.875rem",
-                        pointerEvents: "none",
-                        zIndex: 1,
-                        color: "var(--color-text-muted)",
-                      }}
-                    />
-                    <textarea
-                      id="challenge"
-                      name="challenge"
-                      rows={4}
-                      className="form-textarea"
-                      placeholder="Tell me about your current situation and what you're trying to achieve..."
-                      style={{ paddingLeft: "2.75rem" }}
-                    />
-                  </div>
-                </div>
-
-                {/* How did you find me */}
-                <div>
-                  <label htmlFor="source" className="form-label">
-                    How did you find me?
-                  </label>
-                  <input
-                    id="source"
-                    name="source"
-                    type="text"
-                    className="form-input"
-                    placeholder="Google, LinkedIn, referral..."
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  style={{ width: "100%", justifyContent: "center" }}
-                >
-                  Send Message
-                </button>
-
-                <p
+            {/* Right 45% — availability card */}
+            <div
+              style={{
+                backgroundColor: "var(--color-surface)",
+                border: "1px solid var(--color-border)",
+                borderRadius: "var(--radius-xl)",
+                padding: "1.5rem",
+                boxShadow: "var(--shadow-md)",
+              }}
+            >
+              {/* Top row */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                <div
                   style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.8125rem",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.625rem",
+                  }}
+                >
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      width: "8px",
+                      height: "8px",
+                      borderRadius: "50%",
+                      backgroundColor: "rgba(16,185,129,0.9)",
+                      display: "inline-block",
+                      flexShrink: 0,
+                      animation: "pulse 2s ease infinite",
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontSize: "0.875rem",
+                      fontWeight: 600,
+                      color: "var(--color-text-primary)",
+                    }}
+                  >
+                    Available for new clients
+                  </span>
+                </div>
+                <span className="badge badge-accent">Q2 2026</span>
+              </div>
+
+              <div className="divider" style={{ marginBottom: "0.25rem" }} />
+
+              {/* Micro-testimonials */}
+              {microTestimonials.map((t, i) => (
+                <div
+                  key={t.initials}
+                  style={{
+                    paddingBlock: "0.875rem",
+                    borderBottom:
+                      i < microTestimonials.length - 1
+                        ? "1px solid var(--color-border)"
+                        : "none",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "0.8125rem",
+                      color: "var(--color-text-secondary)",
+                      fontStyle: "italic",
+                      lineHeight: 1.6,
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                    }}
+                  >
+                    <div
+                      aria-hidden="true"
+                      style={{
+                        width: "24px",
+                        height: "24px",
+                        borderRadius: "50%",
+                        backgroundColor: "var(--color-accent-subtle)",
+                        color: "var(--color-accent)",
+                        fontSize: "0.6rem",
+                        fontWeight: 700,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                      }}
+                    >
+                      {t.initials}
+                    </div>
+                    <span
+                      style={{
+                        fontSize: "0.75rem",
+                        color: "var(--color-text-primary)",
+                        fontWeight: 600,
+                      }}
+                    >
+                      {t.name}{" "}
+                      <span
+                        style={{
+                          color: "var(--color-text-muted)",
+                          fontWeight: 400,
+                        }}
+                      >
+                        {t.company}
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              ))}
+
+              {/* Bottom stats bar */}
+              <div
+                style={{
+                  backgroundColor: "var(--color-surface-2)",
+                  borderTop: "1px solid var(--color-border)",
+                  margin: "0 -1.5rem -1.5rem",
+                  padding: "1rem 1.5rem",
+                  borderRadius: "0 0 var(--radius-xl) var(--radius-xl)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: "0.75rem",
                     color: "var(--color-text-muted)",
+                  }}
+                >
+                  22+ brands served
+                </span>
+                <span
+                  style={{
+                    fontSize: "0.75rem",
+                    color: "var(--color-accent)",
+                    fontWeight: 600,
+                  }}
+                >
+                  $5M+ ARR impact
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 2 — CONTACT FORM ── */}
+      <section
+        id="form"
+        aria-label="Contact form"
+        style={{
+          backgroundColor: "var(--color-surface)",
+          borderTop: "1px solid var(--color-border)",
+          paddingBlock: "5rem",
+        }}
+      >
+        <div className="container">
+          <div className="grid-solution">
+            {/* Left 58% — form or success state */}
+            <div aria-live="polite" aria-atomic="true">
+              {submitted ? (
+                /* SUCCESS STATE */
+                <div
+                  style={{
+                    backgroundColor: "var(--color-surface)",
+                    border: "1px solid var(--color-border)",
+                    borderRadius: "var(--radius-xl)",
+                    padding: "3rem",
                     textAlign: "center",
                   }}
                 >
-                  No pitch decks. No sales pressure. Just a direct conversation.
-                </p>
-              </form>
+                  <CheckCircle
+                    size={56}
+                    aria-hidden="true"
+                    style={{
+                      color: "var(--color-accent)",
+                      margin: "0 auto 1.5rem",
+                      display: "block",
+                    }}
+                  />
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "1.5rem",
+                      fontWeight: 600,
+                      color: "var(--color-text-primary)",
+                      marginBottom: "0.75rem",
+                    }}
+                  >
+                    Message received!
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "0.9375rem",
+                      color: "var(--color-text-secondary)",
+                      lineHeight: 1.7,
+                      marginBottom: "0.75rem",
+                    }}
+                  >
+                    I&apos;ll review your situation and get back to you within
+                    24 hours. Check your inbox — I&apos;ll send a confirmation
+                    shortly.
+                  </p>
+                  <span
+                    className="badge badge-accent"
+                    style={{ marginTop: "0.5rem" }}
+                  >
+                    Expected reply: within 24 hours
+                  </span>
+                  <div
+                    className="divider"
+                    style={{ margin: "1.5rem 0 1.25rem" }}
+                  />
+                  <p className="section-label" style={{ justifyContent: "center" }}>
+                    While you wait:
+                  </p>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "1rem",
+                      justifyContent: "center",
+                      marginTop: "1rem",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <Link href="/blog" className="btn btn-secondary">
+                      Read my SEO insights
+                    </Link>
+                    <Link href="/services" className="btn btn-ghost">
+                      View my services
+                    </Link>
+                  </div>
+                </div>
+              ) : (
+                /* FORM */
+                <>
+                  <p className="section-label">Send a message</p>
+                  <h2 style={{ marginBottom: "0.75rem" }}>
+                    Tell me about your situation.
+                  </h2>
+                  <p
+                    style={{
+                      fontSize: "0.9375rem",
+                      color: "var(--color-text-secondary)",
+                      lineHeight: 1.7,
+                      marginBottom: "2rem",
+                    }}
+                  >
+                    The more context you give, the more useful my response will
+                    be. Most replies go out within a few hours.
+                  </p>
 
-              {/* Decorative @ symbol */}
-              <span
-                aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  right: "-1rem",
-                  bottom: "-2rem",
-                  fontSize: "12rem",
-                  opacity: 0.025,
-                  color: "var(--color-accent)",
-                  fontFamily: "var(--font-display)",
-                  pointerEvents: "none",
-                  userSelect: "none",
-                  lineHeight: 1,
-                }}
-              >
-                @
-              </span>
+                  <form
+                    aria-label="Contact form"
+                    onSubmit={handleSubmit}
+                    noValidate
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "1.25rem",
+                    }}
+                  >
+                    {/* Name + Email — two columns */}
+                    <div className="form-two-col">
+                      {/* Name */}
+                      <div>
+                        <label htmlFor="name" className="form-label">
+                          Your name{" "}
+                          <span
+                            aria-hidden="true"
+                            style={{ color: "var(--color-accent)" }}
+                          >
+                            *
+                          </span>
+                        </label>
+                        <input
+                          id="name"
+                          name="name"
+                          type="text"
+                          required
+                          autoComplete="name"
+                          className="form-input"
+                          placeholder="Your full name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          aria-invalid={!!errors.name}
+                          aria-describedby={
+                            errors.name ? "name-error" : undefined
+                          }
+                          style={
+                            errors.name
+                              ? {
+                                  borderColor: "var(--color-error)",
+                                }
+                              : undefined
+                          }
+                        />
+                        {errors.name && (
+                          <div
+                            id="name-error"
+                            className="form-error"
+                            role="alert"
+                          >
+                            <AlertCircle size={12} aria-hidden="true" />
+                            {errors.name}
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Email */}
+                      <div>
+                        <label htmlFor="email" className="form-label">
+                          Work email{" "}
+                          <span
+                            aria-hidden="true"
+                            style={{ color: "var(--color-accent)" }}
+                          >
+                            *
+                          </span>
+                        </label>
+                        <input
+                          id="email"
+                          name="email"
+                          type="email"
+                          required
+                          autoComplete="email"
+                          className="form-input"
+                          placeholder="you@company.com"
+                          value={formData.email}
+                          onChange={handleChange}
+                          aria-invalid={!!errors.email}
+                          aria-describedby={
+                            errors.email ? "email-error" : undefined
+                          }
+                          style={
+                            errors.email
+                              ? {
+                                  borderColor: "var(--color-error)",
+                                }
+                              : undefined
+                          }
+                        />
+                        {errors.email && (
+                          <div
+                            id="email-error"
+                            className="form-error"
+                            role="alert"
+                          >
+                            <AlertCircle size={12} aria-hidden="true" />
+                            {errors.email}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Company */}
+                    <div>
+                      <label htmlFor="company" className="form-label">
+                        Company / Website URL
+                      </label>
+                      <input
+                        id="company"
+                        name="company"
+                        type="text"
+                        className="form-input"
+                        placeholder="acme.com"
+                        value={formData.company}
+                        onChange={handleChange}
+                      />
+                    </div>
+
+                    {/* Stage */}
+                    <div>
+                      <label htmlFor="stage" className="form-label">
+                        What stage is your SaaS?
+                      </label>
+                      <div style={{ position: "relative" }}>
+                        <select
+                          id="stage"
+                          name="stage"
+                          className="form-select"
+                          value={formData.stage}
+                          onChange={handleChange}
+                        >
+                          <option value="">Select your stage...</option>
+                          <option value="pre-revenue">Pre-revenue</option>
+                          <option value="0-100k">$0–100K ARR</option>
+                          <option value="100k-1m">$100K–1M ARR</option>
+                          <option value="1m-5m">$1M–5M ARR</option>
+                          <option value="5m+">$5M+ ARR</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Challenge */}
+                    <div>
+                      <label htmlFor="challenge" className="form-label">
+                        What&apos;s your biggest SEO challenge right now?{" "}
+                        <span
+                          aria-hidden="true"
+                          style={{ color: "var(--color-accent)" }}
+                        >
+                          *
+                        </span>
+                      </label>
+                      <textarea
+                        id="challenge"
+                        name="challenge"
+                        rows={5}
+                        required
+                        className="form-textarea"
+                        placeholder="Be specific — what have you tried, what's not working, what outcome are you trying to achieve? The more detail you give, the better I can help on the call."
+                        value={formData.challenge}
+                        onChange={handleChange}
+                        aria-invalid={!!errors.challenge}
+                        aria-describedby={
+                          errors.challenge ? "challenge-error" : undefined
+                        }
+                        style={
+                          errors.challenge
+                            ? {
+                                borderColor: "var(--color-error)",
+                              }
+                            : undefined
+                        }
+                      />
+                      {errors.challenge && (
+                        <div
+                          id="challenge-error"
+                          className="form-error"
+                          role="alert"
+                        >
+                          <AlertCircle size={12} aria-hidden="true" />
+                          {errors.challenge}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Source */}
+                    <div>
+                      <label htmlFor="source" className="form-label">
+                        How did you find me?
+                      </label>
+                      <input
+                        id="source"
+                        name="source"
+                        type="text"
+                        className="form-input"
+                        placeholder="LinkedIn, Google search, referral from..."
+                        value={formData.source}
+                        onChange={handleChange}
+                      />
+                    </div>
+
+                    {/* Submit */}
+                    <button
+                      type="submit"
+                      className="btn btn-primary"
+                      disabled={isSubmitting}
+                      style={{
+                        width: "100%",
+                        justifyContent: "center",
+                        fontSize: "1rem",
+                        padding: "1rem",
+                        marginTop: "0.5rem",
+                        animation: shaking ? "shake 0.5s ease" : "none",
+                        opacity: isSubmitting ? 0.7 : 1,
+                        cursor: isSubmitting ? "not-allowed" : "pointer",
+                      }}
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                      {!isSubmitting && (
+                        <Send
+                          size={18}
+                          aria-hidden="true"
+                          style={{ marginLeft: "0.25rem" }}
+                        />
+                      )}
+                    </button>
+
+                    {errors.submit && (
+                      <div
+                        role="alert"
+                        style={{
+                          color: "rgba(239,68,68,0.85)",
+                          fontSize: "0.875rem",
+                          marginTop: "0.75rem",
+                          padding: "0.75rem 1rem",
+                          background: "rgba(239,68,68,0.06)",
+                          border: "1px solid rgba(239,68,68,0.2)",
+                          borderRadius: "var(--radius-md)",
+                        }}
+                      >
+                        {errors.submit}
+                      </div>
+                    )}
+
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "0.5rem",
+                        marginTop: "0.75rem",
+                      }}
+                    >
+                      <Lock
+                        size={12}
+                        aria-hidden="true"
+                        style={{ color: "var(--color-text-muted)" }}
+                      />
+                      <span
+                        style={{
+                          fontSize: "0.75rem",
+                          color: "var(--color-text-muted)",
+                        }}
+                      >
+                        Your information is never shared or sold.
+                      </span>
+                    </div>
+                  </form>
+                </>
+              )}
             </div>
 
-            {/* Right — Contact Info */}
-            <div>
-              {/* What happens next */}
-              <div style={{ marginBottom: "2.5rem" }}>
-                <p className="section-label">What happens after you book</p>
-
-                <ol
-                  style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
-                  role="list"
-                >
-                  {steps.map((step) => (
-                    <li key={step.number} style={{ display: "flex", gap: "1rem" }}>
-                      <div
-                        style={{
-                          width: "32px",
-                          height: "32px",
-                          borderRadius: "var(--radius-full)",
-                          backgroundColor: "var(--color-accent-subtle)",
-                          border: "1px solid var(--color-accent-border)",
-                          color: "var(--color-accent)",
-                          fontFamily: "var(--font-display)",
-                          fontSize: "0.8125rem",
-                          fontWeight: 600,
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          flexShrink: 0,
-                        }}
-                        aria-hidden="true"
-                      >
-                        {step.number}
-                      </div>
-                      <div>
-                        <p
-                          style={{
-                            fontFamily: "var(--font-body)",
-                            fontSize: "0.9375rem",
-                            fontWeight: 600,
-                            color: "var(--color-text-primary)",
-                            marginBottom: "0.25rem",
-                          }}
-                        >
-                          {step.title}
-                        </p>
-                        <p
-                          style={{
-                            fontFamily: "var(--font-body)",
-                            fontSize: "0.875rem",
-                            color: "var(--color-text-secondary)",
-                            lineHeight: 1.6,
-                          }}
-                        >
-                          {step.desc}
-                        </p>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-
-              <div className="divider" style={{ marginBottom: "2rem" }} />
-
-              {/* Direct contact */}
-              <address
-                className="not-italic"
-                style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+            {/* Right 42% — value reinforcement (sticky) */}
+            <div className="sticky-col" style={{ position: "sticky", top: "6rem" }}>
+              {/* Call coverage */}
+              <p className="section-label">What we&apos;ll cover on the call</p>
+              <ul
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.75rem",
+                  marginBottom: "2rem",
+                }}
               >
-                <a
-                  href="mailto:ckchandan928@gmail.com"
+                {callCoverageItems.map((item) => (
+                  <li
+                    key={item}
+                    style={{
+                      display: "flex",
+                      alignItems: "flex-start",
+                      gap: "0.625rem",
+                    }}
+                  >
+                    <ArrowRight
+                      size={14}
+                      aria-hidden="true"
+                      style={{
+                        color: "var(--color-accent)",
+                        flexShrink: 0,
+                        marginTop: "3px",
+                      }}
+                    />
+                    <span
+                      style={{
+                        fontSize: "0.9375rem",
+                        color: "var(--color-text-secondary)",
+                        lineHeight: 1.6,
+                      }}
+                    >
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="divider" style={{ marginBottom: "1.5rem" }} />
+
+              {/* Pricing preview */}
+              <div
+                style={{
+                  backgroundColor: "var(--color-bg)",
+                  border: "1px solid var(--color-border)",
+                  borderRadius: "var(--radius-lg)",
+                  padding: "1.25rem",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                <p
                   style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: "0.75rem",
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.9375rem",
-                    color: "var(--color-text-secondary)",
+                    fontSize: "0.75rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    color: "var(--color-text-muted)",
+                    fontWeight: 600,
+                    marginBottom: "0.75rem",
                   }}
                 >
-                  <Mail size={16} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: "2px" }} aria-hidden="true" />
-                  ckchandan928@gmail.com
-                </a>
+                  Investment overview
+                </p>
+                {pricingRows.map((row, i) => (
+                  <div
+                    key={row.tier}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      paddingBlock: "0.625rem",
+                      borderBottom:
+                        i < pricingRows.length - 1
+                          ? "1px solid var(--color-border)"
+                          : "none",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "0.875rem",
+                        color: "var(--color-text-primary)",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {row.tier}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "0.875rem",
+                        color: "var(--color-accent)",
+                        fontWeight: 600,
+                      }}
+                    >
+                      {row.price}
+                    </span>
+                  </div>
+                ))}
+                <p
+                  style={{
+                    fontSize: "0.75rem",
+                    color: "var(--color-text-muted)",
+                    marginTop: "0.75rem",
+                  }}
+                >
+                  Fees are project-based, never time-based.
+                </p>
+              </div>
 
+              <div className="divider" style={{ marginBottom: "1.25rem" }} />
+
+              {/* Direct contact */}
+              <p
+                style={{
+                  fontSize: "0.75rem",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  color: "var(--color-text-muted)",
+                  fontWeight: 600,
+                  marginBottom: "0.75rem",
+                }}
+              >
+                Prefer email?
+              </p>
+              <a
+                href={`mailto:${siteConfig.email}`}
+                style={{
+                  fontSize: "0.875rem",
+                  color: "var(--color-accent)",
+                  fontWeight: 500,
+                  display: "block",
+                  transition: "text-decoration var(--ease-fast)",
+                }}
+                className="hover:underline"
+              >
+                {siteConfig.email}
+              </a>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  marginTop: "0.75rem",
+                }}
+              >
+                <Linkedin
+                  size={16}
+                  aria-hidden="true"
+                  style={{ color: "var(--color-text-muted)", flexShrink: 0 }}
+                />
                 <a
-                  href="https://linkedin.com/in/chandan-chaudhary-seo"
+                  href={siteConfig.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: "0.75rem",
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.9375rem",
+                    fontSize: "0.8125rem",
                     color: "var(--color-text-secondary)",
                   }}
+                  className="hover:text-[var(--color-accent)]"
                 >
-                  <Linkedin size={16} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: "2px" }} aria-hidden="true" />
                   linkedin.com/in/chandan-chaudhary-seo
                 </a>
-
-                <span
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: "0.75rem",
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.9375rem",
-                    color: "var(--color-text-secondary)",
-                  }}
-                >
-                  <MapPin size={16} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: "2px" }} aria-hidden="true" />
-                  Hyderabad, India · Available for remote work globally
-                </span>
-
-                <span
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: "0.75rem",
-                  }}
-                >
-                  <Clock size={16} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: "2px" }} aria-hidden="true" />
-                  <span className="badge badge-muted">Within 24 hours</span>
-                </span>
-              </address>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 3 — OBJECTION HANDLING ── */}
+      <section
+        aria-label="Common concerns"
+        style={{
+          backgroundColor: "var(--color-bg)",
+          borderTop: "1px solid var(--color-border)",
+          paddingBlock: "3rem",
+        }}
+      >
+        <div className="container">
+          <div className="grid-3">
+            {objections.map(({ Icon, title, body }) => (
+              <div key={title}>
+                <div
+                  aria-hidden="true"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    borderRadius: "50%",
+                    backgroundColor: "var(--color-accent-subtle)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: "1rem",
+                  }}
+                >
+                  <Icon
+                    size={20}
+                    style={{ color: "var(--color-accent)" }}
+                    aria-hidden="true"
+                  />
+                </div>
+                <h3 style={{ marginBottom: "0.625rem" }}>{title}</h3>
+                <p style={{ fontSize: "0.9375rem", lineHeight: 1.7 }}>{body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 4 — FINAL CTA ── */}
+      <section
+        aria-label="Final call to action"
+        style={{
+          backgroundColor: "var(--color-accent-subtle)",
+          borderTop: "1px solid var(--color-accent-border)",
+          paddingBlock: "4rem",
+          textAlign: "center",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {/* Decorative quote mark */}
+        <span
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            fontSize: "20rem",
+            opacity: 0.03,
+            fontFamily: "var(--font-display)",
+            color: "var(--color-accent)",
+            top: "-2rem",
+            left: "50%",
+            transform: "translateX(-50%)",
+            pointerEvents: "none",
+            userSelect: "none",
+            lineHeight: 1,
+            zIndex: 0,
+          }}
+        >
+          &ldquo;
+        </span>
+
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+          <p className="section-label" style={{ justifyContent: "center" }}>
+            Ready?
+          </p>
+          <h2
+            style={{
+              maxWidth: "640px",
+              margin: "0 auto 1.25rem",
+            }}
+          >
+            The best time to fix your SEO was 6 months ago. The second best
+            time is now.
+          </h2>
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              color: "var(--color-text-secondary)",
+              maxWidth: "480px",
+              margin: "0 auto 2rem",
+              lineHeight: 1.75,
+            }}
+          >
+            Every week without a proper SEO system is a week your competitors
+            compound and you don&apos;t.
+          </p>
+
+          <a
+            href="#form"
+            className="btn btn-primary"
+            style={{ fontSize: "1.0625rem", padding: "1rem 2.5rem" }}
+          >
+            Book a Free Strategy Call
+          </a>
+
+          <p style={{ marginTop: "1rem", fontSize: "0.875rem" }}>
+            or email{" "}
+            <a
+              href={`mailto:${siteConfig.email}`}
+              style={{
+                color: "var(--color-text-muted)",
+                textDecoration: "underline",
+                textUnderlineOffset: "3px",
+              }}
+            >
+              {siteConfig.email}
+            </a>
+          </p>
+
+          {/* Trust row */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "1.5rem",
+              marginTop: "1.5rem",
+              flexWrap: "wrap",
+            }}
+          >
+            {["Free first call", "No pitch or pressure", "Clarity guaranteed"].map(
+              (item) => (
+                <div
+                  key={item}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.375rem",
+                  }}
+                >
+                  <CheckCircle2
+                    size={12}
+                    aria-hidden="true"
+                    style={{ color: "var(--color-accent)" }}
+                  />
+                  <span
+                    style={{
+                      fontSize: "0.8125rem",
+                      color: "var(--color-text-secondary)",
+                    }}
+                  >
+                    {item}
+                  </span>
+                </div>
+              )
+            )}
           </div>
         </div>
       </section>

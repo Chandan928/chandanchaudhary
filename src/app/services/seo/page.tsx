@@ -16,13 +16,14 @@ import {
   Zap,
   Target,
 } from "lucide-react";
-import { buildMetadata } from "@/lib/metadata";
+import { buildMetadata, siteConfig } from "@/lib/metadata";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { faqSchema } from "@/lib/schema";
+import { faqSchema, serviceSchema } from "@/lib/schema";
 import { GrowthFlywheel } from "@/components/graphics/GrowthFlywheel";
 
 export const metadata: Metadata = buildMetadata({
-  title: "SEO Strategy & Execution",
+  title: "SEO Consulting for SaaS — Revenue-First SEO Strategy",
+  description: "SEO consultant specializing in semantic SEO, topical authority, and revenue-aligned growth for SaaS. $5M+ ARR impact across 22+ brands.",
   path: "/services/seo",
 });
 
@@ -172,6 +173,7 @@ const comparisonRows: [string, boolean, boolean][] = [
 export default function SeoPage() {
   return (
     <>
+      <JsonLd schema={serviceSchema({ name: 'SEO Strategy & Execution', description: 'Full-funnel SEO strategy and execution for SaaS companies. Revenue-first approach tied to ARR and sign-ups.', url: 'https://chandanchaudhary.com/services/seo' })} />
       <JsonLd schema={faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a })))} />
 
       {/* ── Section 1: Hero ── */}
@@ -200,16 +202,9 @@ export default function SeoPage() {
         />
 
         <div className="container">
-          <div
-            style={{
-              display: "flex",
-              alignItems: "flex-start",
-              gap: "4rem",
-            }}
-            className="max-lg:flex-col"
-          >
+          <div className="hero-grid">
             {/* Left — 55% */}
-            <div style={{ flex: "0 0 55%", maxWidth: "55%" }} className="max-lg:max-w-full">
+            <div>
               <p className="section-label">Core service</p>
               <h1 style={{ marginBottom: "1.25rem" }}>
                 SEO Strategy &amp;{" "}
@@ -236,7 +231,7 @@ export default function SeoPage() {
               >
                 9+ years · $5M+ ARR generated · 22+ SaaS brands
               </p>
-              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "1.5rem" }}>
+              <div className="btn-group" style={{ marginBottom: "1.5rem" }}>
                 <Link href="/contact" className="btn btn-primary">
                   Book a Free Strategy Call
                 </Link>
@@ -252,10 +247,7 @@ export default function SeoPage() {
             </div>
 
             {/* Right — 45% */}
-            <div
-              style={{ flex: "0 0 45%", maxWidth: "45%" }}
-              className="max-lg:max-w-full max-lg:w-full"
-            >
+            <div>
               {/* Floating result card */}
               <div
                 style={{
@@ -421,14 +413,7 @@ export default function SeoPage() {
             </p>
           </div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "1.25rem",
-            }}
-            className="max-md:grid-cols-1"
-          >
+          <div className="grid-3">
             {problems.map((p) => (
               <article
                 key={p.title}
@@ -491,15 +476,10 @@ export default function SeoPage() {
       >
         <div className="container">
           <div
-            style={{
-              display: "flex",
-              gap: "4rem",
-              alignItems: "center",
-            }}
-            className="max-lg:flex-col"
+            className="grid-solution"
           >
             {/* Left — 4 pillar cards */}
-            <div style={{ flex: "0 0 58%" }} className="max-lg:w-full">
+            <div>
               <p className="section-label">The solution</p>
               <h2 style={{ marginBottom: "2.5rem", maxWidth: "52ch" }}>
                 A system that ties every action to revenue.
@@ -580,14 +560,13 @@ export default function SeoPage() {
 
             {/* Right — Growth Flywheel SVG */}
             <div
+              className="decorative-svg"
               style={{
-                flex: "0 0 38%",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 gap: "1.5rem",
               }}
-              className="max-lg:w-full"
             >
               <GrowthFlywheel />
               <p
@@ -614,16 +593,9 @@ export default function SeoPage() {
         style={{ backgroundColor: "var(--color-surface)" }}
       >
         <div className="container">
-          <div
-            style={{
-              display: "flex",
-              gap: "4rem",
-              alignItems: "flex-start",
-            }}
-            className="max-lg:flex-col"
-          >
+          <div className="grid-2">
             {/* Left — 40% */}
-            <div style={{ flex: "0 0 36%" }} className="max-lg:w-full">
+            <div>
               <p className="section-label">Scope of work</p>
               <h2 style={{ marginBottom: "1rem", maxWidth: "52ch" }}>
                 Everything included.
@@ -719,7 +691,7 @@ export default function SeoPage() {
             </div>
 
             {/* Right — 60%, 2-col feature grid */}
-            <div style={{ flex: 1 }} className="max-lg:w-full">
+            <div>
               <div
                 style={{
                   display: "grid",
@@ -921,16 +893,9 @@ export default function SeoPage() {
         style={{ backgroundColor: "var(--color-surface)" }}
       >
         <div className="container">
-          <div
-            style={{
-              display: "flex",
-              gap: "4rem",
-              alignItems: "flex-start",
-            }}
-            className="max-lg:flex-col"
-          >
+          <div className="grid-solution-reverse">
             {/* Left — Big stat */}
-            <div style={{ flex: "0 0 32%" }} className="max-lg:w-full">
+            <div>
               <p className="section-label">Proven results</p>
               <h2 style={{ marginBottom: "1.5rem", maxWidth: "52ch" }}>
                 Numbers that matter.
@@ -979,12 +944,10 @@ export default function SeoPage() {
             {/* Right — 3 result cards stacked */}
             <div
               style={{
-                flex: 1,
                 display: "flex",
                 flexDirection: "column",
                 gap: "1.25rem",
               }}
-              className="max-lg:w-full"
             >
               {results.map((r) => (
                 <article
@@ -1043,14 +1006,7 @@ export default function SeoPage() {
             <h2>Is this right for you?</h2>
           </div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "1.5rem",
-            }}
-            className="max-md:grid-cols-1"
-          >
+          <div className="fit-grid">
             {/* Right for */}
             <div
               style={{
@@ -1134,12 +1090,7 @@ export default function SeoPage() {
       >
         <div className="container">
           <div
-            style={{
-              display: "flex",
-              gap: "4rem",
-              alignItems: "flex-start",
-            }}
-            className="max-lg:flex-col"
+            className="grid-2"
           >
             {/* Left — decorative */}
             <div
@@ -1205,7 +1156,7 @@ export default function SeoPage() {
             </div>
 
             {/* Right — FAQ items */}
-            <div style={{ flex: 1 }} className="max-lg:w-full">
+            <div>
               <p className="section-label">Common questions</p>
               <h2 style={{ marginBottom: "2rem", maxWidth: "52ch" }}>
                 Questions about SEO.
@@ -1300,8 +1251,8 @@ export default function SeoPage() {
             </Link>
             <p style={{ fontFamily: "var(--font-body)", fontSize: "0.875rem", color: "var(--color-text-muted)", marginBottom: "1.5rem" }}>
               or email{" "}
-              <a href="mailto:ckchandan928@gmail.com" style={{ color: "var(--color-accent)" }}>
-                ckchandan928@gmail.com
+              <a href={`mailto:${siteConfig.email}`} style={{ color: "var(--color-accent)" }}>
+                {siteConfig.email}
               </a>
             </p>
             {/* Trust signals */}

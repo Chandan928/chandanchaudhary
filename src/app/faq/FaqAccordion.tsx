@@ -130,6 +130,7 @@ export function FaqAccordion() {
                       aria-expanded={isOpen}
                       aria-controls={panelId}
                       onClick={() => toggle(item.id)}
+                      className="accordion-trigger"
                       style={{
                         display: "flex",
                         width: "100%",
