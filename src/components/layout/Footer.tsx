@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Mail, MapPin, Linkedin } from "lucide-react";
+import { FooterSocials } from "@/components/layout/FooterSocials";
 import { CookiePreferencesLink } from "@/components/gdpr/CookiePreferencesLink";
 import { siteConfig } from "@/lib/metadata";
 
@@ -91,6 +92,9 @@ export function Footer() {
             >
               Organic growth, engineered with AI.
             </p>
+
+            {/* Social links */}
+            <FooterSocials />
 
             <address className="not-italic flex flex-col gap-3">
               <a
@@ -207,11 +211,11 @@ export function Footer() {
             <CookiePreferencesLink />
             <span style={{ color: "var(--color-text-muted)", fontSize: "0.8125rem" }}>·</span>
             <a
-              href={siteConfig.linkedin}
+              href={siteConfig.socials.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="footer-link-social"
-              aria-label="Chandan Chaudhary on LinkedIn"
+              aria-label="Chandan Chaudhary on LinkedIn — imchandanchaudhary"
             >
               <Linkedin size={14} aria-hidden="true" />
               LinkedIn

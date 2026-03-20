@@ -10,9 +10,15 @@ const siteConfig = {
   author: "Chandan Chaudhary",
   email: "ckchandan928@gmail.com",
   phone: "+919014997870",
-  linkedin: "https://linkedin.com/in/chandan-chaudhary-seo",
+  linkedin: "https://www.linkedin.com/in/imchandanchaudhary/",
   location: "Hyderabad, India",
-  twitterHandle: "@chandanchaudhary",
+  twitterHandle: "@theseoarchitect",
+  socials: {
+    twitter: "https://x.com/theseoarchitect",
+    facebook: "https://www.facebook.com/akachandanchaudhary/",
+    linkedin: "https://www.linkedin.com/in/imchandanchaudhary/",
+    github: "https://github.com/Chandan928",
+  },
   keywords: [
     "SEO Consultant India",
     "SEO Consultant Hyderabad",

@@ -20,7 +20,10 @@ export function personSchema() {
       addressCountry: "IN",
     },
     sameAs: [
-      "https://linkedin.com/in/chandanchaudhary",
+      "https://www.linkedin.com/in/imchandanchaudhary/",
+      "https://x.com/theseoarchitect",
+      "https://www.facebook.com/akachandanchaudhary/",
+      "https://github.com/Chandan928",
     ],
     knowsAbout: [
       "SEO",
