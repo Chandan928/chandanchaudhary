@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  transpilePackages: ['sanity', 'next-sanity', '@sanity/ui', '@sanity/icons', '@sanity/vision'],
+  transpilePackages: ['next-sanity'],
 }
 
 export default nextConfig
