@@ -1185,4 +1185,169 @@
       justify-content: center;
     }
   }
+
+  /* ── Blog ── */
+
+  /* Card hover lift */
+  .blog-card {
+    transition: transform 150ms ease, box-shadow var(--ease-fast);
+  }
+  .blog-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+  .blog-card:hover .blog-post-title {
+    color: var(--color-accent);
+  }
+
+  /* Breadcrumb link */
+  .breadcrumb-link {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--ease-fast);
+  }
+  .breadcrumb-link:hover {
+    color: var(--color-accent);
+  }
+
+  /* Author box social icon buttons */
+  .author-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: border-color var(--ease-fast), color var(--ease-fast);
+    min-height: unset;
+  }
+  .author-social-link:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+}
+
+/* ── Prose (blog article body) ── */
+.prose {
+  color: var(--color-text-secondary);
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  font-family: var(--font-body);
+}
+.prose p { margin-bottom: 1.5rem; }
+.prose h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.prose h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.prose blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding: 1rem 1.25rem;
+  background: var(--color-accent-subtle);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+.prose ul { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+.prose ul li {
+  padding: 0.375rem 0 0.375rem 1.5rem;
+  position: relative;
+  color: var(--color-text-secondary);
+}
+.prose ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.875rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.prose ol {
+  counter-reset: list-counter;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+.prose ol li {
+  counter-increment: list-counter;
+  padding: 0.375rem 0 0.375rem 2rem;
+  position: relative;
+  color: var(--color-text-secondary);
+}
+.prose ol li::before {
+  content: counter(list-counter);
+  position: absolute;
+  left: 0;
+  top: 0.375rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-accent-subtle);
+  border: 1px solid var(--color-accent-border);
+  color: var(--color-accent);
+  font-size: 0.625rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-border);
+  text-underline-offset: 3px;
+}
+.prose a:hover { text-decoration-color: var(--color-accent); }
+.prose strong { color: var(--color-text-primary); font-weight: 600; }
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.125rem 0.375rem;
+  color: var(--color-accent);
+}
+.prose pre {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+.prose pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+.prose hr { border: none; border-top: 1px solid var(--color-border); margin: 2.5rem 0; }
+.prose img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  margin: 1.5rem 0;
 }
