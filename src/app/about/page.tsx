@@ -25,7 +25,6 @@ export const metadata: Metadata = buildMetadata({
   description:
     "CS graduate turned SEO consultant with 9+ years of experience and $5M+ ARR impact. Worked with Keka HR, Venngage, GrabOn, and 19+ more SaaS brands.",
   path: "/about",
-  keywords: ["Chandan Chaudhary", "SEO Consultant Hyderabad", "SEO Expert India"],
 });
 
 /* ── Data ── */

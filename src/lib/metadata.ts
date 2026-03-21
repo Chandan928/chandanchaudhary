@@ -19,26 +19,12 @@ const siteConfig = {
     linkedin: "https://www.linkedin.com/in/imchandanchaudhary/",
     github: "https://github.com/Chandan928",
   },
-  keywords: [
-    "SEO Consultant India",
-    "SEO Consultant Hyderabad",
-    "GEO Consultant",
-    "AEO Consultant",
-    "Answer Engine Optimization",
-    "Generative Engine Optimization",
-    "Technical SEO Expert",
-    "Semantic SEO",
-    "AI SEO",
-    "Local SEO Hyderabad",
-    "Freelance SEO Consultant India",
-  ],
 };
 
 export function buildMetadata(options?: {
   title?: string;
   description?: string;
   path?: string;
-  keywords?: string[];
   noIndex?: boolean;
 }): Metadata {
   const title = options?.title
@@ -50,7 +36,6 @@ export function buildMetadata(options?: {
   return {
     title,
     description,
-    keywords: [...siteConfig.keywords, ...(options?.keywords || [])],
     authors: [{ name: siteConfig.author }],
     creator: siteConfig.author,
     metadataBase: new URL(siteConfig.url),
