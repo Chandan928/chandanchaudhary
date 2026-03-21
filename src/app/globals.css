@@ -3,16 +3,15 @@
    Theme: Dark mode default
    ================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
-
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 /* Register font families as Tailwind utilities */
+/* --font-sora / --font-dm-sans / --font-jetbrains are injected by next/font/google */
 @theme inline {
-  --font-display: 'Sora', system-ui, sans-serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: var(--font-sora), system-ui, sans-serif;
+  --font-body: var(--font-dm-sans), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), monospace;
 }
 
 /* Dark mode (default) */

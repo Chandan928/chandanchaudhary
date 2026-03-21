@@ -1,4 +1,11 @@
+// Bundle analyzer: ANALYZE=true npm run build — review client bundle for unexpected bloat
+// Key finding areas: lucide-react (use named imports only), react-icons, date libraries
+import withBundleAnalyzer from '@next/bundle-analyzer'
 import type { NextConfig } from 'next'
+
+const bundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})
 
 const nextConfig: NextConfig = {
   images: {
@@ -30,4 +37,4 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default nextConfig
+export default bundleAnalyzer(nextConfig)

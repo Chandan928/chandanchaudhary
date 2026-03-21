@@ -1,6 +1,28 @@
 import type { Metadata, Viewport } from "next";
+import { Sora, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { buildMetadata } from "@/lib/metadata";
+
+const sora = Sora({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-sora",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-jetbrains",
+  display: "swap",
+});
 import { JsonLd } from "@/components/seo/JsonLd";
 import { personSchema, websiteSchema } from "@/lib/schema";
 import { Navbar } from "@/components/layout/Navbar";
@@ -44,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${sora.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}>
       <head>
         <JsonLd schema={[personSchema(), websiteSchema()]} />
       </head>

@@ -1,26 +1,17 @@
+// READY TO DEPLOY — push to production only after Lighthouse score 90+ confirmed
+// Do not deploy this change until all pre-launch fixes are verified
 import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
-  const isProduction = process.env.VERCEL_ENV === 'production'
-
-  if (!isProduction) {
-    return {
-      rules: [
-        {
-          userAgent: '*',
-          disallow: '/',
-        },
-      ],
-    }
-  }
-
   return {
     rules: [
       {
         userAgent: '*',
-        disallow: '/',
+        allow: '/',
+        disallow: ['/studio/', '/api/'],
       },
     ],
     sitemap: 'https://chandanchaudhary.com/sitemap.xml',
+    host: 'https://chandanchaudhary.com',
   }
 }

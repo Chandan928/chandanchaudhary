@@ -967,6 +967,34 @@ export default function AeoPage() {
         </div>
       </section>
 
+      {/* ── Related services ── */}
+      <section
+        aria-label="Related services"
+        style={{
+          backgroundColor: "var(--color-bg)",
+          borderTop: "1px solid var(--color-border)",
+          paddingBlock: "2.5rem",
+        }}
+      >
+        <div className="container">
+          <p className="section-label">Related services</p>
+          <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", marginTop: "0.75rem" }}>
+            <Link
+              href="/services/seo"
+              style={{ fontSize: "0.9375rem", color: "var(--color-accent)", fontWeight: 500 }}
+            >
+              SEO Strategy & Execution — the topical authority that fuels AI citations →
+            </Link>
+            <Link
+              href="/services/technical-seo"
+              style={{ fontSize: "0.9375rem", color: "var(--color-accent)", fontWeight: 500 }}
+            >
+              Technical SEO — structured data and crawlability that AI models rely on →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ── Section 9: CTA ── */}
       <section
         aria-label="Call to action"

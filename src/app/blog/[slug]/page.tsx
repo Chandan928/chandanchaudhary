@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ChevronRight, Clock, ImageIcon } from "lucide-react";
 import { FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
@@ -77,12 +78,16 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = allPosts.find((p) => p.slug === slug) ?? allPosts[0];
-  return buildMetadata({
-    title: post.title,
-    description: post.excerpt,
-    path: `/blog/${slug}`,
-  });
+  const post = allPosts.find((p) => p.slug === slug);
+  if (!post) notFound();
+  return {
+    ...buildMetadata({
+      title: post.title,
+      description: post.excerpt,
+      path: `/blog/${slug}`,
+    }),
+    robots: { index: false, follow: true },
+  };
 }
 
 export default async function BlogPostPage({
@@ -91,7 +96,8 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = allPosts.find((p) => p.slug === slug) ?? allPosts[0];
+  const post = allPosts.find((p) => p.slug === slug);
+  if (!post) notFound();
   const pageUrl = `${siteConfig.url}/blog/${post.slug}`;
   const truncatedTitle =
     post.title.length > 40 ? post.title.slice(0, 40) + "…" : post.title;
