@@ -36,6 +36,15 @@ yarn-error.log*
 # vercel
 .vercel
 
+# editor / IDE
+.cursor/
+
+# local planning & scratch docs
+*.bak
+mobile-responsive-fix.md
+phase-*.md
+rebuild-prompt.md
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
