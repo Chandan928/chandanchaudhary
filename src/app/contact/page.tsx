@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { siteConfig } from "@/lib/metadata";
 import {
   CheckCircle2,
@@ -13,7 +13,6 @@ import {
   DollarSign,
   Clock,
   Linkedin,
-  CheckCircle,
 } from "lucide-react";
 
 interface FormData {
@@ -108,9 +107,9 @@ const objections = [
 ];
 
 export default function ContactPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState<FormData>(emptyForm);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [submitted, setSubmitted] = useState(false);
   const [shaking, setShaking] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -153,7 +152,7 @@ export default function ContactPage() {
       if (!response.ok) {
         throw new Error(data.error || "Failed to send message");
       }
-      setSubmitted(true);
+      router.push('/thank-you');
     } catch (error) {
       setErrors({
         submit:
@@ -428,84 +427,9 @@ export default function ContactPage() {
       >
         <div className="container">
           <div className="grid-solution">
-            {/* Left 58% — form or success state */}
-            <div aria-live="polite" aria-atomic="true">
-              {submitted ? (
-                /* SUCCESS STATE */
-                <div
-                  style={{
-                    backgroundColor: "var(--color-surface)",
-                    border: "1px solid var(--color-border)",
-                    borderRadius: "var(--radius-xl)",
-                    padding: "3rem",
-                    textAlign: "center",
-                  }}
-                >
-                  <CheckCircle
-                    size={56}
-                    aria-hidden="true"
-                    style={{
-                      color: "var(--color-accent)",
-                      margin: "0 auto 1.5rem",
-                      display: "block",
-                    }}
-                  />
-                  <h3
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontSize: "1.5rem",
-                      fontWeight: 600,
-                      color: "var(--color-text-primary)",
-                      marginBottom: "0.75rem",
-                    }}
-                  >
-                    Message received!
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: "0.9375rem",
-                      color: "var(--color-text-secondary)",
-                      lineHeight: 1.7,
-                      marginBottom: "0.75rem",
-                    }}
-                  >
-                    I&apos;ll review your situation and get back to you within
-                    24 hours. Check your inbox — I&apos;ll send a confirmation
-                    shortly.
-                  </p>
-                  <span
-                    className="badge badge-accent"
-                    style={{ marginTop: "0.5rem" }}
-                  >
-                    Expected reply: within 24 hours
-                  </span>
-                  <div
-                    className="divider"
-                    style={{ margin: "1.5rem 0 1.25rem" }}
-                  />
-                  <p className="section-label" style={{ justifyContent: "center" }}>
-                    While you wait:
-                  </p>
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "1rem",
-                      justifyContent: "center",
-                      marginTop: "1rem",
-                      flexWrap: "wrap",
-                    }}
-                  >
-                    <Link href="/blog" className="btn btn-secondary">
-                      Read my SEO insights
-                    </Link>
-                    <Link href="/services" className="btn btn-ghost">
-                      View my services
-                    </Link>
-                  </div>
-                </div>
-              ) : (
-                /* FORM */
-                <>
+            {/* Left 58% — form */}
+            <div>
+              <>
                   <p className="section-label">Send a message</p>
                   <h2 style={{ marginBottom: "0.75rem" }}>
                     Tell me about your situation.
@@ -792,7 +716,6 @@ export default function ContactPage() {
                     </div>
                   </form>
                 </>
-              )}
             </div>
 
             {/* Right 42% — value reinforcement (sticky) */}
