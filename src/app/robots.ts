@@ -5,27 +5,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: '/',
-        disallow: ['/studio/', '/api/'],
-      },
-      {
-        userAgent: 'GPTBot',
-        allow: '/',
-      },
-      {
-        userAgent: 'anthropic-ai',
-        allow: '/',
-      },
-      {
-        userAgent: 'PerplexityBot',
-        allow: '/',
-      },
-      {
-        userAgent: 'Google-Extended',
-        allow: '/',
+        disallow: '/',
       },
     ],
     sitemap: 'https://chandanchaudhary.com/sitemap.xml',
-    host: 'https://chandanchaudhary.com',
   }
 }
