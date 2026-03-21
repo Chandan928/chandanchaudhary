@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ChevronRight, ArrowLeft, Clock } from "lucide-react";
+import { ChevronRight, Clock, ImageIcon } from "lucide-react";
 import { FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 import { buildMetadata, siteConfig } from "@/lib/metadata";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -297,97 +297,103 @@ export default async function BlogPostPage({
       {/* ── PART 2: Cover Image ── */}
       <div
         style={{
-          height: "clamp(260px, 30vw, 420px)",
-          background:
-            "linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-2) 50%, var(--color-surface) 100%)",
-          position: "relative",
-          overflow: "hidden",
-          marginTop: "2rem",
+          maxWidth: "680px",
+          margin: "2rem auto 0",
+          paddingInline: "1.5rem",
         }}
       >
-        {/* Glow left */}
         <div
-          aria-hidden="true"
           style={{
-            position: "absolute",
-            width: "500px",
-            height: "500px",
-            borderRadius: "50%",
+            height: "280px",
             background:
-              "radial-gradient(circle, rgba(108,99,255,0.12) 0%, transparent 70%)",
-            top: "-100px",
-            left: "-100px",
-          }}
-        />
-        {/* Glow right */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            width: "500px",
-            height: "500px",
-            borderRadius: "50%",
-            background:
-              "radial-gradient(circle, rgba(108,99,255,0.12) 0%, transparent 70%)",
-            bottom: "-100px",
-            right: "-100px",
-            opacity: 0.08,
-          }}
-        />
-        {/* Grid overlay */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage:
-              "linear-gradient(var(--color-border) 1px, transparent 1px), linear-gradient(90deg, var(--color-border) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-            opacity: 0.3,
-          }}
-        />
-        {/* Center content */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            gap: "0.75rem",
+              "linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-2) 50%, var(--color-surface) 100%)",
+            position: "relative",
+            overflow: "hidden",
+            borderRadius: "var(--radius-xl)",
+            border: "1px solid var(--color-border)",
           }}
         >
-          <span
+          {/* Glow left */}
+          <div
+            aria-hidden="true"
             style={{
-              display: "inline-flex",
+              position: "absolute",
+              width: "500px",
+              height: "500px",
+              borderRadius: "50%",
+              background:
+                "radial-gradient(circle, rgba(108,99,255,0.12) 0%, transparent 70%)",
+              top: "-100px",
+              left: "-100px",
+            }}
+          />
+          {/* Glow right */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              width: "500px",
+              height: "500px",
+              borderRadius: "50%",
+              background:
+                "radial-gradient(circle, rgba(108,99,255,0.12) 0%, transparent 70%)",
+              bottom: "-100px",
+              right: "-100px",
+              opacity: 0.08,
+            }}
+          />
+          {/* Grid overlay */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 0,
+              backgroundImage:
+                "linear-gradient(var(--color-border) 1px, transparent 1px), linear-gradient(90deg, var(--color-border) 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
+              opacity: 0.3,
+            }}
+          />
+          {/* Placeholder */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
               alignItems: "center",
-              backgroundColor: "var(--color-accent-subtle)",
-              border: "1px solid var(--color-accent-border)",
-              borderRadius: "100px",
-              padding: "3px 10px",
-              fontSize: "0.65rem",
-              fontWeight: 600,
-              color: "var(--color-accent)",
-              fontFamily: "var(--font-body)",
+              justifyContent: "center",
+              flexDirection: "column",
+              gap: "0.5rem",
             }}
           >
-            {post.category}
-          </span>
-          <p
-            style={{
-              fontSize: "clamp(1rem, 2.5vw, 1.5rem)",
-              fontWeight: 700,
-              fontFamily: "var(--font-display)",
-              color: "var(--color-text-primary)",
-              textAlign: "center",
-              padding: "0 2rem",
-              maxWidth: "600px",
-              lineHeight: 1.3,
-            }}
-          >
-            {post.title}
-          </p>
+            <div
+              style={{
+                width: "48px",
+                height: "48px",
+                borderRadius: "10px",
+                background: "var(--color-accent-subtle)",
+                border: "1px solid var(--color-accent-border)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <ImageIcon
+                size={20}
+                style={{ color: "var(--color-accent)", opacity: 0.5 }}
+                aria-hidden="true"
+              />
+            </div>
+            <span
+              style={{
+                fontSize: "0.7rem",
+                color: "var(--color-text-muted)",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              Cover image
+            </span>
+          </div>
         </div>
       </div>
 
@@ -593,39 +599,6 @@ export default async function BlogPostPage({
         </div>
       </section>
 
-      {/* ── PART 6: Back to Blog ── */}
-      <div
-        style={{
-          backgroundColor: "var(--color-bg)",
-          paddingBlock: "2rem",
-          borderTop: "1px solid var(--color-border)",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "680px",
-            marginInline: "auto",
-            paddingInline: "1.5rem",
-          }}
-        >
-          <Link
-            href="/blog"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              fontSize: "0.9375rem",
-              color: "var(--color-accent)",
-              fontWeight: 500,
-              fontFamily: "var(--font-body)",
-              textDecoration: "none",
-            }}
-          >
-            <ArrowLeft size={16} aria-hidden="true" />
-            Back to all articles
-          </Link>
-        </div>
-      </div>
     </>
   );
 }
