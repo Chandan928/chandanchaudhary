@@ -1199,34 +1199,6 @@ export default function SeoPage() {
         </div>
       </section>
 
-      {/* ── Related services ── */}
-      <section
-        aria-label="Related services"
-        style={{
-          backgroundColor: "var(--color-bg)",
-          borderTop: "1px solid var(--color-border)",
-          paddingBlock: "2.5rem",
-        }}
-      >
-        <div className="container">
-          <p className="section-label">Related services</p>
-          <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", marginTop: "0.75rem" }}>
-            <Link
-              href="/services/technical-seo"
-              style={{ fontSize: "0.9375rem", color: "var(--color-accent)", fontWeight: 500 }}
-            >
-              Technical SEO — the foundation that makes every strategy compound faster →
-            </Link>
-            <Link
-              href="/services/aeo"
-              style={{ fontSize: "0.9375rem", color: "var(--color-accent)", fontWeight: 500 }}
-            >
-              AEO — extend your organic visibility into AI-generated answers →
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* ── Section 9: CTA ── */}
       <section
         aria-label="Call to action"

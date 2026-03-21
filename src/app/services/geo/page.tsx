@@ -1296,34 +1296,6 @@ export default function GeoPage() {
         </div>
       </section>
 
-      {/* ── Related services ── */}
-      <section
-        aria-label="Related services"
-        style={{
-          backgroundColor: "var(--color-bg)",
-          borderTop: "1px solid var(--color-border)",
-          paddingBlock: "2.5rem",
-        }}
-      >
-        <div className="container">
-          <p className="section-label">Related services</p>
-          <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", marginTop: "0.75rem" }}>
-            <Link
-              href="/services/seo"
-              style={{ fontSize: "0.9375rem", color: "var(--color-accent)", fontWeight: 500 }}
-            >
-              SEO Strategy & Execution — the Google ranking authority that helps GEO work →
-            </Link>
-            <Link
-              href="/services/aeo"
-              style={{ fontSize: "0.9375rem", color: "var(--color-accent)", fontWeight: 500 }}
-            >
-              AEO — optimize specifically for AI-generated answers and featured responses →
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* ── Section 9: CTA ── */}
       <section
         aria-label="Book a GEO strategy call"

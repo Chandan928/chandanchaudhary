@@ -1248,34 +1248,6 @@ export default function TechnicalSeoPage() {
         </div>
       </section>
 
-      {/* ── Related services ── */}
-      <section
-        aria-label="Related services"
-        style={{
-          backgroundColor: "var(--color-bg)",
-          borderTop: "1px solid var(--color-border)",
-          paddingBlock: "2.5rem",
-        }}
-      >
-        <div className="container">
-          <p className="section-label">Related services</p>
-          <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", marginTop: "0.75rem" }}>
-            <Link
-              href="/services/seo"
-              style={{ fontSize: "0.9375rem", color: "var(--color-accent)", fontWeight: 500 }}
-            >
-              SEO Strategy & Execution — the revenue-aligned strategy that runs on your technical foundation →
-            </Link>
-            <Link
-              href="/services/aeo"
-              style={{ fontSize: "0.9375rem", color: "var(--color-accent)", fontWeight: 500 }}
-            >
-              AEO — structured data and render quality that gets your brand cited by AI →
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* ── Section 9: CTA ── */}
       <section
         aria-label="Call to action"
