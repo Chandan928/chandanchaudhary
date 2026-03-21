@@ -4,6 +4,19 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "regions": ["sin1"],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.chandanchaudhary.com"
+        }
+      ],
+      "destination": "https://chandanchaudhary.com/:path*",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
