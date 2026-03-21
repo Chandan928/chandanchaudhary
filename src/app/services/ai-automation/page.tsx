@@ -324,11 +324,11 @@ export default function AiAutomationPage() {
 
             {/* Right — 45% — Workflow Pipeline Card */}
             <div
-              style={{ flex: "0 0 45%", maxWidth: "45%" }}
-              className="max-lg:max-w-full max-lg:w-full"
+              style={{ width: '100%', display: 'flex', alignItems: 'stretch', justifyContent: 'flex-end' }}
             >
               <div
                 style={{
+                  width: '100%',
                   backgroundColor: "var(--color-surface)",
                   border: "1px solid var(--color-border)",
                   borderRadius: "var(--radius-xl)",
@@ -544,11 +544,9 @@ export default function AiAutomationPage() {
                     14.5 hours
                   </span>
                 </div>
-              </div>
-
-              {/* Floating badge */}
-              <div style={{ marginTop: "1rem", paddingLeft: "0.5rem" }}>
-                <span className="badge badge-accent">50% less content briefing time</span>
+                <div style={{ padding: "0.625rem 1rem", borderTop: "1px solid var(--color-border)" }}>
+                  <span className="badge badge-accent">50% less content briefing time</span>
+                </div>
               </div>
             </div>
           </div>

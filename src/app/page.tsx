@@ -178,50 +178,6 @@ export default function HomePage() {
           }}
         />
 
-        {/* Floating badge pills */}
-        <span
-          aria-hidden="true"
-          className="badge badge-muted"
-          style={{
-            position: "absolute",
-            top: "7rem",
-            right: "2rem",
-            fontSize: "0.75rem",
-            opacity: 0.35,
-            pointerEvents: "none",
-          }}
-        >
-          Semantic SEO
-        </span>
-        <span
-          aria-hidden="true"
-          className="badge badge-muted"
-          style={{
-            position: "absolute",
-            top: "12rem",
-            right: "4rem",
-            fontSize: "0.75rem",
-            opacity: 0.35,
-            pointerEvents: "none",
-          }}
-        >
-          AI Automation
-        </span>
-        <span
-          aria-hidden="true"
-          className="badge badge-muted"
-          style={{
-            position: "absolute",
-            top: "17rem",
-            right: "1.5rem",
-            fontSize: "0.75rem",
-            opacity: 0.35,
-            pointerEvents: "none",
-          }}
-        >
-          GEO Optimization
-        </span>
-
         <div className="container">
           {/* Flex row: content left, card right */}
           <div className="hero-grid">

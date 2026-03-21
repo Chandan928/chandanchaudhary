@@ -247,11 +247,11 @@ export default function TechnicalSeoPage() {
 
             {/* Right — 45%: Terminal Audit Card */}
             <div
-              style={{ flex: "0 0 45%", maxWidth: "45%" }}
-              className="max-lg:max-w-full max-lg:w-full"
+              style={{ width: '100%', display: 'flex', alignItems: 'stretch', justifyContent: 'flex-end' }}
             >
               <div
                 style={{
+                  width: '100%',
                   backgroundColor: "#0D0D14",
                   border: "1px solid var(--color-border)",
                   borderRadius: "var(--radius-xl)",
