@@ -21,6 +21,14 @@ export const metadata: Metadata = {
     shortcut: "/favicon.svg",
   },
   manifest: "/site.webmanifest",
+  robots: {
+    index: process.env.VERCEL_ENV === 'production',
+    follow: process.env.VERCEL_ENV === 'production',
+    googleBot: {
+      index: process.env.VERCEL_ENV === 'production',
+      follow: process.env.VERCEL_ENV === 'production',
+    },
+  },
 };
 
 export const viewport: Viewport = {
