@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
+
+const resend = process.env.RESEND_API_KEY
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null
 
 interface ContactFormData {
   name: string
@@ -21,6 +26,13 @@ function sanitize(str: string): string {
 }
 
 export async function POST(request: NextRequest) {
+  if (!resend) {
+    return NextResponse.json(
+      { error: 'Email service not configured yet. Please email ckchandan928@gmail.com directly.' },
+      { status: 503 }
+    )
+  }
+
   try {
     const body: ContactFormData = await request.json()
 
