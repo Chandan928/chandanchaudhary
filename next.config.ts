@@ -13,6 +13,21 @@ const nextConfig: NextConfig = {
     ],
   },
   transpilePackages: ['next-sanity'],
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.chandanchaudhary.com',
+          },
+        ],
+        destination: 'https://chandanchaudhary.com/:path*',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default nextConfig

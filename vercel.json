@@ -4,14 +4,6 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "regions": ["sin1"],
-  "redirects": [
-    {
-      "source": "http://chandanchaudhary.com/(.*)",
-      "destination": "https://chandanchaudhary.com/$1",
-      "permanent": true,
-      "statusCode": 301
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -39,15 +31,6 @@
         {
           "key": "Strict-Transport-Security",
           "value": "max-age=31536000; includeSubDomains"
-        }
-      ]
-    },
-    {
-      "source": "/fonts/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
         }
       ]
     },
