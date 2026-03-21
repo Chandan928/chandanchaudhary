@@ -1,22 +1,23 @@
 {
-  "name": "Chandan Chaudhary — SEO Consultant",
-  "short_name": "Chandan CC",
-  "description": "SEO Consultant specializing in GEO, AEO, Semantic SEO and AI Automation",
+  "name": "Chandan Chaudhary",
+  "short_name": "CC",
+  "description": "SEO & AI Consultant for SaaS Founders",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0F0F1A",
   "theme_color": "#6C63FF",
   "icons": [
     {
-      "src": "/og-icon.svg",
-      "sizes": "512x512",
-      "type": "image/svg+xml",
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/apple-touch-icon.svg",
-      "sizes": "180x180",
-      "type": "image/svg+xml"
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
