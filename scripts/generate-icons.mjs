@@ -11,7 +11,7 @@ const publicDir = join(__dirname, '..', 'public')
 const svgBuffer = readFileSync(join(publicDir, 'favicon.svg'))
 
 const pngSizes = [
-  { name: 'favicon-16x16.png', size: 16 },
+  { name: 'favicon-48x48.png', size: 48 },
   { name: 'favicon-32x32.png', size: 32 },
   { name: 'apple-touch-icon.png', size: 180 },
   { name: 'icon-192x192.png', size: 192 },
@@ -28,10 +28,11 @@ async function main() {
     console.log(`✓ ${name}`)
   }
 
-  // Generate favicon.ico with embedded 16×16 and 32×32 PNGs
+  // Generate favicon.ico with embedded 16×16, 32×32, and 48×48 PNGs
   const png16 = await sharp(svgBuffer).resize(16, 16).png().toBuffer()
   const png32 = await sharp(svgBuffer).resize(32, 32).png().toBuffer()
-  const ico = buildIco([png16, png32], [16, 32])
+  const png48 = await sharp(svgBuffer).resize(48, 48).png().toBuffer()
+  const ico = buildIco([png16, png32, png48], [16, 32, 48])
   writeFileSync(join(publicDir, 'favicon.ico'), ico)
   console.log('✓ favicon.ico')
 }
