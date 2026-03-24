@@ -18,8 +18,9 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { faqSchema, serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Local SEO Services — Dominate Local Search",
-  description: "Local SEO consultant helping businesses dominate Google Maps and local pack results. GBP optimization, citations, and review strategy.",
+  titleAbsolute: "Local SEO Services",
+  description:
+    "Improve visibility in maps and local search through structured optimization, citations, and review strategies.",
   path: "/services/local-seo",
 });
 

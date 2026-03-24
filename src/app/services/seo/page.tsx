@@ -22,8 +22,9 @@ import { faqSchema, serviceSchema } from "@/lib/schema";
 import { GrowthFlywheel } from "@/components/graphics/GrowthFlywheel";
 
 export const metadata: Metadata = buildMetadata({
-  title: "SEO Consulting for SaaS — Revenue-First SEO Strategy",
-  description: "SEO consultant specializing in semantic SEO, topical authority, and revenue-aligned growth for SaaS. $5M+ ARR impact across 22+ brands.",
+  titleAbsolute: "SEO Consulting for SaaS and AI Companies",
+  description:
+    "Semantic SEO and topical authority strategies designed to improve rankings and drive pipeline through search.",
   path: "/services/seo",
 });
 

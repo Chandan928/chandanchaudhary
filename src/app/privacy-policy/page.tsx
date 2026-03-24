@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Privacy Policy",
+  titleAbsolute: "Privacy Policy",
+  description:
+    "Learn how your data is collected, used, and protected when interacting with this website and consulting services.",
   path: "/privacy-policy",
 });
 

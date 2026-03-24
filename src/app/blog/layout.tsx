@@ -3,9 +3,10 @@ import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = {
   ...buildMetadata({
-    title: "SEO, GEO & AI Growth Insights — Blog",
+    titleAbsolute:
+      "SEO GEO AEO and AI Search Insights for SaaS and AI Teams",
     description:
-      "Practical frameworks, case studies, and data-driven thinking on SEO, GEO, AEO, and AI automation for SaaS founders and growth teams.",
+      "Insights and frameworks on SEO, GEO, AEO, and AI search to help SaaS and AI teams improve visibility, rankings, and pipeline.",
     path: "/blog",
   }),
   robots: { index: false, follow: true },

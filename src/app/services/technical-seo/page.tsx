@@ -17,8 +17,9 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { faqSchema, serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Technical SEO Services — Fix Your Foundation",
-  description: "Technical SEO consultant for SaaS. Crawl optimization, Core Web Vitals, JavaScript SEO, and site architecture for complex tech stacks.",
+  titleAbsolute: "Technical SEO Services",
+  description:
+    "Fix crawl issues, improve performance, and optimize site architecture to support scalable organic growth.",
   path: "/services/technical-seo",
 });
 

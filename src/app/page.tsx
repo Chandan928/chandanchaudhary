@@ -18,7 +18,13 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { personSchema, websiteSchema } from "@/lib/schema";
 import { LogoStrip } from "@/components/sections/LogoStrip";
 
-export const metadata: Metadata = buildMetadata();
+export const metadata: Metadata = buildMetadata({
+  titleAbsolute:
+    "Chandan Chaudhary | SEO Consultant for SaaS and AI Companies",
+  description:
+    "SEO consultant helping SaaS and AI companies grow pipeline through search, GEO, AEO, and scalable organic growth systems.",
+  path: "/",
+});
 
 /* ── Data ── */
 const stats = [

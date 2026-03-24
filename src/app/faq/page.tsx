@@ -7,9 +7,9 @@ import { faqSchema } from "@/lib/schema";
 import { FaqAccordion } from "./FaqAccordion";
 
 export const metadata: Metadata = buildMetadata({
-  title: "FAQ — Common Questions | Chandan Chaudhary SEO Consultant",
+  titleAbsolute: "SEO Consulting FAQ for SaaS and AI Companies",
   description:
-    "Answers to the most common questions SaaS founders ask before working with Chandan Chaudhary — SEO consultant specializing in revenue-first organic growth.",
+    "Answers to common questions on SEO consulting, process, timelines, and how SaaS and AI companies drive growth through search.",
   path: "/faq",
 });
 

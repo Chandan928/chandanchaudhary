@@ -20,10 +20,9 @@ import { personSchema } from "@/lib/schema";
 import { LogoStrip } from "@/components/sections/LogoStrip";
 
 export const metadata: Metadata = buildMetadata({
-  title:
-    "About Chandan Chaudhary — SEO Consultant, Hyderabad | 9+ Years Experience",
+  titleAbsolute: "About Chandan Chaudhary | SEO Consultant for SaaS and AI",
   description:
-    "CS graduate turned SEO consultant with 9+ years of experience and $5M+ ARR impact. Worked with Keka HR, Venngage, GrabOn, and 19+ more SaaS brands.",
+    "Chandan Chaudhary is an SEO consultant working with SaaS and AI companies to build search driven growth systems focused on pipeline and revenue.",
   path: "/about",
 });
 
@@ -208,7 +207,7 @@ export default function AboutPage() {
                   marginBottom: "2rem",
                 }}
               >
-                I&apos;m Chandan Chaudhary — a CS graduate turned SEO consultant
+                I am Chandan Chaudhary a Computer Science graduate turned SEO consultant
                 obsessed with one problem: why do some companies grow predictably
                 through organic search while others spin their wheels for years?
                 The answer, almost always, is systems.

@@ -18,8 +18,9 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { faqSchema, serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: "GEO — Generative Engine Optimization",
-  description: "Get cited by AI, not just ranked by Google. GEO consultant specializing in entity optimization, citation authority, and LLM visibility.",
+  titleAbsolute: "GEO Services for SaaS and AI Companies",
+  description:
+    "Improve entity signals and strengthen visibility across AI driven search and discovery platforms.",
   path: "/services/geo",
 });
 

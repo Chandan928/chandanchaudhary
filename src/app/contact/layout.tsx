@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Book a Free SEO Strategy Call — Chandan Chaudhary",
+  titleAbsolute: "Contact | SEO Strategy Call for SaaS and AI Companies",
   description:
-    "Book a free 30-minute SEO strategy call with Chandan Chaudhary. Get clarity on your organic growth gaps and a clear plan — no pitch, no pressure.",
+    "Book a strategy call to identify SEO gaps and build a roadmap for scaling search and pipeline growth.",
   path: "/contact",
 });
 

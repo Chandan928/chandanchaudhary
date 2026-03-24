@@ -19,9 +19,10 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { personSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: "SEO, GEO, AEO & AI Automation Services | Chandan Chaudhary",
+  titleAbsolute:
+    "SEO GEO AEO and AI Search Services for SaaS and AI Companies",
   description:
-    "Revenue-first SEO consulting services for SaaS teams. SEO strategy, GEO, AEO, Local SEO, AI automation, and Technical SEO — all tied to ARR and pipeline.",
+    "Services focused on SEO, GEO, and AI search to improve rankings, visibility, and pipeline for SaaS and AI companies.",
   path: "/services",
 });
 

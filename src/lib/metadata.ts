@@ -22,14 +22,19 @@ const siteConfig = {
 };
 
 export function buildMetadata(options?: {
+  /** Short segment; becomes `"${title} | Chandan Chaudhary"`. Ignored if `titleAbsolute` is set. */
   title?: string;
+  /** Full page title as emitted in `<title>` (no suffix appended). */
+  titleAbsolute?: string;
   description?: string;
   path?: string;
   noIndex?: boolean;
 }): Metadata {
-  const title = options?.title
-    ? `${options.title} | Chandan Chaudhary`
-    : siteConfig.title;
+  const title = options?.titleAbsolute
+    ? options.titleAbsolute
+    : options?.title
+      ? `${options.title} | Chandan Chaudhary`
+      : siteConfig.title;
   const description = options?.description || siteConfig.description;
   const url = `${siteConfig.url}${options?.path || ""}`;
 

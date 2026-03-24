@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Terms of Service",
+  titleAbsolute: "Terms of Service",
+  description:
+    "Terms and conditions governing the use of this website and consulting services.",
   path: "/terms",
 });
 

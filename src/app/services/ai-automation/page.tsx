@@ -22,8 +22,9 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { faqSchema, serviceSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: "AI Automation for SEO — Build Faster SEO Systems",
-  description: "SEO automation consultant building AI-powered workflows with n8n, Make, and Python. Automate content briefs, keyword research, and reporting.",
+  titleAbsolute: "AI Automation for SEO for SaaS and AI Companies",
+  description:
+    "Build scalable SEO systems using AI workflows for research, content execution, and faster growth.",
   path: "/services/ai-automation",
 });
 

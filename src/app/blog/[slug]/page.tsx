@@ -11,6 +11,8 @@ export const revalidate = 3600;
 
 type Post = {
   slug: string;
+  metaTitle: string;
+  metaDescription: string;
   category: string;
   title: string;
   excerpt: string;
@@ -23,6 +25,10 @@ type Post = {
 const allPosts: Post[] = [
   {
     slug: "venngage-125m-arr-seo",
+    metaTitle:
+      "SEO Case Study for SaaS | Driving Revenue Through Organic Growth",
+    metaDescription:
+      "Breakdown of SEO strategy and execution that contributed to strong revenue growth through organic search.",
     category: "Case Studies",
     title: "How I helped Venngage drive $1.25M ARR through SEO",
     excerpt:
@@ -38,6 +44,9 @@ const allPosts: Post[] = [
   },
   {
     slug: "geo-vs-seo-saas-founders-2025",
+    metaTitle: "GEO vs SEO for SaaS and AI Companies in 2025",
+    metaDescription:
+      "Learn how GEO and SEO differ and how SaaS and AI companies can adapt to AI driven search and evolving discovery systems.",
     category: "GEO & AEO",
     title: "GEO vs SEO: What SaaS founders need to know in 2025",
     excerpt:
@@ -53,6 +62,9 @@ const allPosts: Post[] = [
   },
   {
     slug: "seo-audit-framework",
+    metaTitle: "SEO Audit Framework for SaaS and AI Companies",
+    metaDescription:
+      "A structured SEO audit framework to uncover gaps, prioritize actions, and align organic strategy with pipeline growth.",
     category: "SEO Strategy",
     title: "The SEO audit framework I use for every new client",
     excerpt:
@@ -82,8 +94,8 @@ export async function generateMetadata({
   if (!post) notFound();
   return {
     ...buildMetadata({
-      title: post.title,
-      description: post.excerpt,
+      titleAbsolute: post.metaTitle,
+      description: post.metaDescription,
       path: `/blog/${slug}`,
     }),
     robots: { index: false, follow: true },

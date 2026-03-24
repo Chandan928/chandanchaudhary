@@ -14,8 +14,9 @@ import { faqSchema, serviceSchema } from "@/lib/schema";
 import { EntityWeb } from "@/components/graphics/EntityWeb";
 
 export const metadata: Metadata = buildMetadata({
-  title: "AEO — Answer Engine Optimization for SaaS",
-  description: "Optimize your SaaS brand for ChatGPT, Perplexity, and Gemini. AEO consultant helping SaaS companies appear in AI-generated answers.",
+  titleAbsolute: "AEO Services for SaaS and AI Companies",
+  description:
+    "Improve visibility in AI generated answers and increase chances of being recommended across modern search experiences.",
   path: "/services/aeo",
 });
 
