@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Sora, DM_Sans, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -71,21 +72,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${sora.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}>
       <head>
-        {/* Google Tag Manager */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5WRK3476');`,
-          }}
-        />
-        {/* End Google Tag Manager */}
         <JsonLd schema={[personSchema(), websiteSchema()]} />
       </head>
       <body className="pt-16">
-        {/* Google Tag Manager (noscript) */}
+        {/* Google Tag Manager (noscript fallback for no-JS users) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-5WRK3476"
@@ -94,7 +84,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        {/* End Google Tag Manager (noscript) */}
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
@@ -104,6 +93,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </main>
         <Footer />
         <CookieConsent />
+        {/* Google Tag Manager — loaded after hydration to avoid DOM reconciliation errors */}
+        <Script
+          id="gtm"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5WRK3476');`,
+          }}
+        />
       </body>
     </html>
   );
