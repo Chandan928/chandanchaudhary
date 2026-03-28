@@ -21,6 +21,7 @@ const navLinks = [
   { label: "Services", href: "/services", hasDropdown: true },
   { label: "Blog",     href: "/blog" },
   { label: "FAQ",      href: "/faq" },
+  { label: "Results",  href: "/results" },
 ];
 
 export function Navbar() {
