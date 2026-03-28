@@ -92,14 +92,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = allPosts.find((p) => p.slug === slug);
   if (!post) notFound();
-  return {
-    ...buildMetadata({
-      titleAbsolute: post.metaTitle,
-      description: post.metaDescription,
-      path: `/blog/${slug}`,
-    }),
-    robots: { index: false, follow: true },
-  };
+  return buildMetadata({
+    titleAbsolute: post.metaTitle,
+    description: post.metaDescription,
+    path: `/blog/${slug}`,
+  });
 }
 
 export default async function BlogPostPage({

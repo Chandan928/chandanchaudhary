@@ -248,7 +248,7 @@ function AutomationFlowSvg({ maxWidth = "220px" }: { maxWidth?: string }) {
 export default function AiAutomationPage() {
   return (
     <>
-      <JsonLd schema={serviceSchema({ name: 'AI Automation for SEO', description: 'SEO automation consulting with AI-powered workflows using n8n, Make, and Python. Automate content briefs, keyword research, and reporting.', url: 'https://chandanchaudhary.com/services/ai-automation' })} />
+      <JsonLd schema={serviceSchema({ name: 'AI Automation for SEO', description: 'SEO automation consulting with AI-powered workflows using n8n, Make, and Python. Automate content briefs, keyword research, and reporting.', url: 'https://chandanchaudhary.com/services/ai-automation', serviceType: 'AI Automation for SEO' })} />
       <JsonLd schema={faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a })))} />
 
       {/* ── Section 1: Hero ── */}

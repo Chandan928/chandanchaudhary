@@ -156,7 +156,7 @@ const faqs = [
 export default function AeoPage() {
   return (
     <>
-      <JsonLd schema={serviceSchema({ name: 'AEO — Answer Engine Optimization', description: 'Optimize your SaaS brand for ChatGPT, Perplexity, and Gemini. AEO consulting for AI-generated answer visibility.', url: 'https://chandanchaudhary.com/services/aeo' })} />
+      <JsonLd schema={serviceSchema({ name: 'AEO — Answer Engine Optimization', description: 'Optimize your SaaS brand for ChatGPT, Perplexity, and Gemini. AEO consulting for AI-generated answer visibility.', url: 'https://chandanchaudhary.com/services/aeo', serviceType: 'Answer Engine Optimization' })} />
       <JsonLd schema={faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a })))} />
 
       {/* ── Section 1: Hero ── */}

@@ -81,6 +81,7 @@ export function serviceSchema(service: {
   name: string;
   description: string;
   url: string;
+  serviceType?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -93,11 +94,8 @@ export function serviceSchema(service: {
       name: "Chandan Chaudhary",
       url: "https://chandanchaudhary.com",
     },
-    areaServed: {
-      "@type": "Country",
-      name: "India",
-    },
-    serviceType: "SEO Consulting",
+    areaServed: "Worldwide",
+    serviceType: service.serviceType ?? "SEO Consulting",
   };
 }
 

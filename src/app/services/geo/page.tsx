@@ -174,7 +174,7 @@ function CitationNetworkSVG({ maxWidth = 320 }: { maxWidth?: number }) {
 export default function GeoPage() {
   return (
     <>
-      <JsonLd schema={serviceSchema({ name: 'GEO — Generative Engine Optimization', description: 'Get cited by AI, not just ranked by Google. GEO consulting for entity optimization, citation authority, and LLM visibility.', url: 'https://chandanchaudhary.com/services/geo' })} />
+      <JsonLd schema={serviceSchema({ name: 'GEO — Generative Engine Optimization', description: 'Get cited by AI, not just ranked by Google. GEO consulting for entity optimization, citation authority, and LLM visibility.', url: 'https://chandanchaudhary.com/services/geo', serviceType: 'Generative Engine Optimization' })} />
       <JsonLd schema={faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a })))} />
 
       {/* ── Section 1: Hero ── */}
