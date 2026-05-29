@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   TrendingUp,
-  MessageSquare,
   Globe,
   MapPin,
   Zap,
@@ -22,7 +21,7 @@ export const metadata: Metadata = buildMetadata({
   titleAbsolute:
     "Chandan Chaudhary | SEO Consultant for SaaS and AI Companies",
   description:
-    "SEO consultant helping SaaS and AI companies grow pipeline through search, GEO, AEO, and scalable organic growth systems.",
+    "SEO consultant helping SaaS and AI companies grow pipeline through search, AI search, and scalable organic growth systems.",
   path: "/",
 });
 
@@ -74,19 +73,11 @@ const services = [
     badge: { label: "Most Popular", variant: "badge-accent" },
   },
   {
-    Icon: MessageSquare,
-    name: "AEO — Answer Engine Optimization",
-    description:
-      "Your buyers are asking ChatGPT, Perplexity, and Gemini for recommendations. I make sure your brand shows up in those answers.",
-    href: "/services/aeo",
-    badge: { label: "New", variant: "badge-muted" },
-  },
-  {
     Icon: Globe,
-    name: "GEO — Generative Engine Optimization",
+    name: "AI Search Optimization",
     description:
-      "LLMs are the new search engines. I optimize your content for AI citations, entity authority, and retrieval — so you rank in the AI era.",
-    href: "/services/geo",
+      "Improve visibility across Google AI Overviews, ChatGPT, Perplexity, Gemini, and other AI search experiences with a practical search-led system.",
+    href: "/services/ai-search",
     badge: { label: "New", variant: "badge-muted" },
   },
   {
@@ -190,7 +181,7 @@ export default function HomePage() {
 
             {/* Left: hero content */}
             <div>
-              <p className="section-label">SEO · GEO · AEO · AI Automation · Hyderabad, India</p>
+              <p className="section-label">SEO · AI Search · AI Automation · Hyderabad, India</p>
 
               <h1 style={{ marginBottom: "1.5rem" }}>
                 Organic growth,{" "}

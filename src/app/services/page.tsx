@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   TrendingUp,
-  MessageSquare,
   Globe,
   MapPin,
   Zap,
@@ -20,16 +19,15 @@ import { personSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
   titleAbsolute:
-    "SEO GEO AEO and AI Search Services for SaaS and AI Companies",
+    "SEO and AI Search Services for SaaS and AI Companies",
   description:
-    "Services focused on SEO, GEO, and AI search to improve rankings, visibility, and pipeline for SaaS and AI companies.",
+    "Services focused on SEO, AI search, automation, and technical foundations to improve rankings, visibility, and pipeline for SaaS and AI companies.",
   path: "/services",
 });
 
 const quickNavServices = [
   { Icon: TrendingUp, name: "SEO Strategy", href: "/services/seo" },
-  { Icon: MessageSquare, name: "AEO", href: "/services/aeo" },
-  { Icon: Globe, name: "GEO", href: "/services/geo" },
+  { Icon: Globe, name: "AI Search", href: "/services/ai-search" },
   { Icon: MapPin, name: "Local SEO", href: "/services/local-seo" },
   { Icon: Zap, name: "AI Automation", href: "/services/ai-automation" },
   { Icon: Settings2, name: "Technical SEO", href: "/services/technical-seo" },
@@ -49,28 +47,16 @@ const serviceCards = [
     href: "/services/seo",
   },
   {
-    Icon: MessageSquare,
-    name: "AEO — Answer Engine Optimization",
-    desc: "Make your brand the answer AI gives. Optimize for ChatGPT, Perplexity, and Gemini — where your buyers are already researching.",
-    bullets: [
-      "AI platform visibility audit",
-      "Structured answer optimization",
-      "Citation source strategy",
-    ],
-    badge: "Custom scope",
-    href: "/services/aeo",
-  },
-  {
     Icon: Globe,
-    name: "GEO — Generative Engine Optimization",
-    desc: "Get cited by AI, not just ranked by Google. Build entity authority so LLMs consistently reference your brand in generated answers.",
+    name: "AI Search Optimization",
+    desc: "Show up across Google AI Overviews, ChatGPT, Perplexity, Gemini, and other AI-assisted search journeys where buyers compare options.",
     bullets: [
-      "Entity optimization",
-      "Citation authority building",
-      "AI visibility monitoring",
+      "AI visibility and prompt audit",
+      "Entity and answer architecture",
+      "Citation and source authority strategy",
     ],
     badge: "Custom scope",
-    href: "/services/geo",
+    href: "/services/ai-search",
   },
   {
     Icon: MapPin,
@@ -255,7 +241,7 @@ export default function ServicesPage() {
             <div style={{ flex: "0 0 55%", maxWidth: "55%" }} className="max-lg:max-w-full">
               <p className="section-label">What I do</p>
               <h1 style={{ marginBottom: "1.25rem" }}>
-                Six services. One goal:{" "}
+                Five services. One goal:{" "}
                 <span style={{ color: "var(--color-accent)" }}>organic revenue.</span>
               </h1>
               <p
@@ -382,7 +368,7 @@ export default function ServicesPage() {
               }}
             >
               Most consultants offer a menu of tactics. I offer a system. Each service connects to
-              the others — technical SEO enables content, GEO amplifies SEO, AEO captures AI demand,
+              the others — technical SEO enables content, AI search captures emerging demand,
               automation scales execution. Together they compound.
             </p>
           </div>
@@ -411,13 +397,9 @@ export default function ServicesPage() {
             <rect x="10" y="84" width="90" height="32" rx="6" fill="var(--color-surface)" stroke="var(--color-border)" strokeWidth="1" />
             <text x="55" y="103" fontSize="9" fill="var(--color-text-secondary)" textAnchor="middle" fontFamily="var(--font-body)">SEO</text>
 
-            {/* AEO node */}
+            {/* AI Search node */}
             <rect x="110" y="20" width="90" height="32" rx="6" fill="var(--color-surface)" stroke="var(--color-border)" strokeWidth="1" />
-            <text x="155" y="39" fontSize="9" fill="var(--color-text-secondary)" textAnchor="middle" fontFamily="var(--font-body)">AEO</text>
-
-            {/* GEO node */}
-            <rect x="400" y="20" width="90" height="32" rx="6" fill="var(--color-surface)" stroke="var(--color-border)" strokeWidth="1" />
-            <text x="445" y="39" fontSize="9" fill="var(--color-text-secondary)" textAnchor="middle" fontFamily="var(--font-body)">GEO</text>
+            <text x="155" y="39" fontSize="9" fill="var(--color-text-secondary)" textAnchor="middle" fontFamily="var(--font-body)">AI Search</text>
 
             {/* Local SEO node */}
             <rect x="500" y="84" width="90" height="32" rx="6" fill="var(--color-surface)" stroke="var(--color-border)" strokeWidth="1" />
@@ -436,8 +418,7 @@ export default function ServicesPage() {
           <ul className="mobile-only" style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.625rem', marginTop: '1.5rem' }}>
             {[
               { href: '/services/seo', label: 'SEO Strategy & Execution' },
-              { href: '/services/aeo', label: 'AEO — Answer Engine Optimization' },
-              { href: '/services/geo', label: 'GEO — Generative Engine Optimization' },
+              { href: '/services/ai-search', label: 'AI Search Optimization' },
               { href: '/services/local-seo', label: 'Local SEO' },
               { href: '/services/ai-automation', label: 'AI Automation' },
               { href: '/services/technical-seo', label: 'Technical SEO' },
@@ -648,7 +629,7 @@ export default function ServicesPage() {
                 lineHeight: 1.75,
               }}
             >
-              Whether you hire me for SEO, GEO, or AI automation — the engagement follows the same
+              Whether you hire me for SEO, AI search, or AI automation — the engagement follows the same
               proven framework.
             </p>
           </div>

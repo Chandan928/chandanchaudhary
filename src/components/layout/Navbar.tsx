@@ -8,8 +8,7 @@ import { cn } from "@/lib/utils";
 
 const services = [
   { label: "SEO",           href: "/services/seo" },
-  { label: "AEO",           href: "/services/aeo" },
-  { label: "GEO",           href: "/services/geo" },
+  { label: "AI Search",     href: "/services/ai-search" },
   { label: "Local SEO",     href: "/services/local-seo" },
   { label: "AI Automation", href: "/services/ai-automation" },
   { label: "Technical SEO", href: "/services/technical-seo" },
