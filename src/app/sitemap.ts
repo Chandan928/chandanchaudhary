@@ -29,14 +29,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/services/aeo`,
-      lastModified: new Date('2026-03-21'),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/services/geo`,
-      lastModified: new Date('2026-03-21'),
+      url: `${baseUrl}/services/ai-search`,
+      lastModified: new Date('2026-05-29'),
       changeFrequency: 'monthly',
       priority: 0.9,
     },

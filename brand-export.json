@@ -1,0 +1,363 @@
+{
+  "brand": {
+    "name": "Chandan Chaudhary",
+    "tagline": "SEO Consultant | GEO, AEO & AI Search Expert",
+    "description": "SEO Consultant with 9+ years of experience driving $5M+ ARR impact. Expert in GEO, AEO, Semantic SEO, Technical SEO & AI Automation. Based in Hyderabad, India.",
+    "siteUrl": "https://chandanchaudhary.com",
+    "author": "Chandan Chaudhary",
+    "email": "ckchandan928@gmail.com",
+    "location": "Hyderabad, India",
+    "twitterHandle": "@theseoarchitect",
+    "socials": {
+      "twitter": "https://x.com/theseoarchitect",
+      "linkedin": "https://www.linkedin.com/in/imchandanchaudhary/",
+      "github": "https://github.com/Chandan928",
+      "facebook": "https://www.facebook.com/akachandanchaudhary/"
+    }
+  },
+  "colors": {
+    "background": "#0F0F1A",
+    "surface": "#1A1A2E",
+    "surface2": "#16213E",
+    "primary": "#6C63FF",
+    "accent": "#6C63FF",
+    "accentHover": "#8075FF",
+    "accentSubtle": "rgba(108, 99, 255, 0.12)",
+    "accentBorder": "rgba(108, 99, 255, 0.25)",
+    "text": {
+      "primary": "#E8E8F0",
+      "secondary": "#A0A0B8",
+      "muted": "#7070A0"
+    },
+    "border": "#2A2A4A",
+    "borderStrong": "#3A3A5C",
+    "error": {
+      "subtle": "rgba(239, 68, 68, 0.4)",
+      "default": "rgba(239, 68, 68, 0.7)",
+      "text": "rgba(239, 68, 68, 0.85)"
+    },
+    "gradients": [],
+    "light": {
+      "background": "#F8F8FF",
+      "surface": "#FFFFFF",
+      "surface2": "#F0F0FA",
+      "accent": "#5B52F0",
+      "accentHover": "#4A42D8",
+      "accentSubtle": "rgba(91, 82, 240, 0.08)",
+      "accentBorder": "rgba(91, 82, 240, 0.2)",
+      "text": {
+        "primary": "#0F0F1A",
+        "secondary": "#3A3A5A",
+        "muted": "#6B6B90"
+      },
+      "border": "#E0E0F0",
+      "borderStrong": "#C8C8E8",
+      "error": {
+        "subtle": "rgba(239, 68, 68, 0.35)",
+        "default": "rgba(220, 38, 38, 0.7)",
+        "text": "rgba(220, 38, 38, 0.85)"
+      }
+    }
+  },
+  "typography": {
+    "fonts": {
+      "display": "Sora",
+      "body": "DM Sans",
+      "mono": "JetBrains Mono"
+    },
+    "fontSource": "next/font/google",
+    "fontWeights": {
+      "display": [300, 400, 500, 600, 700, 800],
+      "body": [300, 400, 500, 600],
+      "mono": [400, 500]
+    },
+    "scale": {
+      "h1": "clamp(2.5rem, 5vw, 3.75rem)",
+      "h2": "clamp(1.75rem, 3vw, 2.5rem)",
+      "h3": "clamp(1.25rem, 2vw, 1.5rem)",
+      "body": "1rem",
+      "small": "0.875rem",
+      "label": "0.6875rem",
+      "mono": "0.875rem",
+      "btn": "0.9375rem",
+      "btnSm": "0.875rem",
+      "badge": "0.75rem",
+      "navLink": "0.9375rem",
+      "stat": "2rem",
+      "formLabel": "0.8125rem"
+    },
+    "weights": {
+      "h1": 600,
+      "h2": 600,
+      "h3": 600,
+      "body": 400,
+      "label": 700,
+      "btn": 600,
+      "navLink": 500,
+      "badge": 600,
+      "formLabel": 600
+    },
+    "lineHeights": {
+      "h1": 1.1,
+      "h2": 1.2,
+      "h3": 1.3,
+      "body": 1.75,
+      "global": 1.7,
+      "small": 1.6,
+      "mono": 1.6,
+      "formError": 1.4,
+      "stat": 1
+    },
+    "letterSpacing": {
+      "headings": "-0.025em",
+      "stat": "-0.02em",
+      "label": "0.12em",
+      "badge": "0.01em"
+    }
+  },
+  "spacing": {
+    "containerMaxWidth": "1200px",
+    "containerPaddingInline": "1.5rem",
+    "sectionPaddingBlock": "6rem",
+    "sectionSmPaddingBlock": "4rem",
+    "cardPadding": "1.75rem",
+    "logoItemWidth": "140px",
+    "logoItemHeight": "48px"
+  },
+  "radii": {
+    "sm": "0.375rem",
+    "md": "0.5rem",
+    "lg": "0.875rem",
+    "xl": "1.25rem",
+    "full": "9999px"
+  },
+  "shadows": {
+    "dark": {
+      "sm": "0 1px 3px rgba(0, 0, 0, 0.4)",
+      "md": "0 4px 16px rgba(0, 0, 0, 0.4)",
+      "lg": "0 12px 40px rgba(0, 0, 0, 0.5)",
+      "accent": "0 4px 24px rgba(108, 99, 255, 0.3)"
+    },
+    "light": {
+      "sm": "0 1px 3px rgba(15, 15, 26, 0.08)",
+      "md": "0 4px 16px rgba(15, 15, 26, 0.08)",
+      "lg": "0 12px 40px rgba(15, 15, 26, 0.12)",
+      "accent": "0 4px 24px rgba(91, 82, 240, 0.2)"
+    }
+  },
+  "motion": {
+    "ease": "250ms cubic-bezier(0.4, 0, 0.2, 1)",
+    "easeFast": "150ms cubic-bezier(0.4, 0, 0.2, 1)",
+    "logoStripDuration": "35s linear infinite",
+    "cardHoverTranslate": "translateY(-2px)",
+    "btnHoverTranslate": "translateY(-1px)"
+  },
+  "breakpoints": {
+    "sm": "640px",
+    "md": "768px",
+    "lg": "1024px",
+    "xl": "1280px",
+    "2xl": "1536px"
+  },
+  "components": {
+    "button": {
+      "base": {
+        "fontFamily": "DM Sans",
+        "fontSize": "0.9375rem",
+        "fontWeight": 600,
+        "paddingBlock": "0.8125rem",
+        "paddingInline": "1.875rem",
+        "borderRadius": "0.5rem",
+        "borderWidth": "1.5px",
+        "minHeight": "48px",
+        "transition": "250ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "gap": "0.5rem"
+      },
+      "variants": {
+        "primary": {
+          "background": "#6C63FF",
+          "color": "#ffffff",
+          "borderColor": "#6C63FF",
+          "hover": {
+            "background": "#8075FF",
+            "borderColor": "#8075FF",
+            "transform": "translateY(-1px)",
+            "boxShadow": "0 4px 24px rgba(108, 99, 255, 0.3)"
+          },
+          "active": {
+            "transform": "translateY(0)"
+          }
+        },
+        "secondary": {
+          "background": "transparent",
+          "color": "#6C63FF",
+          "borderColor": "rgba(108, 99, 255, 0.25)",
+          "hover": {
+            "background": "rgba(108, 99, 255, 0.12)",
+            "borderColor": "#6C63FF",
+            "transform": "translateY(-1px)"
+          }
+        },
+        "ghost": {
+          "background": "transparent",
+          "color": "#A0A0B8",
+          "borderColor": "#2A2A4A",
+          "hover": {
+            "color": "#E8E8F0",
+            "background": "#16213E"
+          }
+        },
+        "sm": {
+          "fontSize": "0.875rem",
+          "paddingBlock": "0.625rem",
+          "paddingInline": "1.25rem"
+        }
+      }
+    },
+    "card": {
+      "background": "#1A1A2E",
+      "border": "1px solid #2A2A4A",
+      "borderRadius": "0.875rem",
+      "padding": "1.75rem",
+      "transition": "250ms cubic-bezier(0.4, 0, 0.2, 1)",
+      "hover": {
+        "borderColor": "rgba(108, 99, 255, 0.25)",
+        "transform": "translateY(-2px)",
+        "boxShadow": "0 4px 16px rgba(0, 0, 0, 0.4)"
+      }
+    },
+    "input": {
+      "background": "#0F0F1A",
+      "border": "1.5px solid #2A2A4A",
+      "borderRadius": "0.5rem",
+      "paddingBlock": "0.8125rem",
+      "paddingInline": "1rem",
+      "fontFamily": "DM Sans",
+      "fontSize": "0.9375rem",
+      "color": "#E8E8F0",
+      "placeholderColor": "#7070A0",
+      "focus": {
+        "borderColor": "#6C63FF",
+        "boxShadow": "0 0 0 3px rgba(108, 99, 255, 0.12)"
+      },
+      "transition": "150ms cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    "badge": {
+      "fontSize": "0.75rem",
+      "fontWeight": 600,
+      "paddingBlock": "0.3125rem",
+      "paddingInline": "0.75rem",
+      "borderRadius": "9999px",
+      "letterSpacing": "0.01em",
+      "variants": {
+        "accent": {
+          "background": "rgba(108, 99, 255, 0.12)",
+          "color": "#6C63FF",
+          "border": "1px solid rgba(108, 99, 255, 0.25)"
+        },
+        "muted": {
+          "background": "#16213E",
+          "color": "#7070A0",
+          "border": "1px solid #2A2A4A"
+        }
+      }
+    },
+    "navLink": {
+      "fontFamily": "DM Sans",
+      "fontSize": "0.9375rem",
+      "fontWeight": 500,
+      "color": "#A0A0B8",
+      "paddingBlock": "0.5rem",
+      "paddingInline": "0.875rem",
+      "borderRadius": "0.375rem",
+      "hover": {
+        "color": "#E8E8F0"
+      },
+      "active": {
+        "color": "#6C63FF"
+      }
+    }
+  },
+  "assets": {
+    "logo": {
+      "svg": "https://chandanchaudhary.com/favicon.svg",
+      "png": null,
+      "dark": null
+    },
+    "favicon": "https://chandanchaudhary.com/favicon.ico",
+    "faviconSvg": "https://chandanchaudhary.com/favicon.svg",
+    "favicon16": "https://chandanchaudhary.com/favicon-16x16.png",
+    "favicon32": "https://chandanchaudhary.com/favicon-32x32.png",
+    "favicon48": "https://chandanchaudhary.com/favicon-48x48.png",
+    "ogImage": "https://chandanchaudhary.com/og",
+    "ogIcon": "https://chandanchaudhary.com/og-icon.svg",
+    "appleTouchIcon": "https://chandanchaudhary.com/apple-touch-icon.png",
+    "pwaIcon192": "https://chandanchaudhary.com/icon-192x192.png",
+    "pwaIcon512": "https://chandanchaudhary.com/icon-512x512.png",
+    "webManifest": "https://chandanchaudhary.com/site.webmanifest",
+    "profilePhoto": {
+      "url": "https://chandanchaudhary.com/images/chandan-chaudhary.png",
+      "type": "png",
+      "usage": "headshot/profile-photo"
+    },
+    "clientLogos": [
+      { "path": "/images/logos/a23-logo.png", "url": "https://chandanchaudhary.com/images/logos/a23-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/adscholars-logo.png", "url": "https://chandanchaudhary.com/images/logos/adscholars-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/apalya-logo-black.png", "url": "https://chandanchaudhary.com/images/logos/apalya-logo-black.png", "type": "png", "usage": "client-logo-dark-variant" },
+      { "path": "/images/logos/apalya-logo-white.png", "url": "https://chandanchaudhary.com/images/logos/apalya-logo-white.png", "type": "png", "usage": "client-logo-light-variant" },
+      { "path": "/images/logos/blockify-logo.png", "url": "https://chandanchaudhary.com/images/logos/blockify-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/cutshort-logo.png", "url": "https://chandanchaudhary.com/images/logos/cutshort-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/digitalnext-logo.png", "url": "https://chandanchaudhary.com/images/logos/digitalnext-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/driven-properties-logo.png", "url": "https://chandanchaudhary.com/images/logos/driven-properties-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/grabon-logo-black.png", "url": "https://chandanchaudhary.com/images/logos/grabon-logo-black.png", "type": "png", "usage": "client-logo-dark-variant" },
+      { "path": "/images/logos/grabon-logo-main.png", "url": "https://chandanchaudhary.com/images/logos/grabon-logo-main.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/keka-hr-logo.png", "url": "https://chandanchaudhary.com/images/logos/keka-hr-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/kims-hospitals-logo.png", "url": "https://chandanchaudhary.com/images/logos/kims-hospitals-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/lagado-watches-logo.png", "url": "https://chandanchaudhary.com/images/logos/lagado-watches-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/medicover-hospitals-logo.png", "url": "https://chandanchaudhary.com/images/logos/medicover-hospitals-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/olostep-logo.png", "url": "https://chandanchaudhary.com/images/logos/olostep-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/qualitest-logo.png", "url": "https://chandanchaudhary.com/images/logos/qualitest-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/quillbot-logo.png", "url": "https://chandanchaudhary.com/images/logos/quillbot-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/sapil-logo.png", "url": "https://chandanchaudhary.com/images/logos/sapil-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/solvetude-logo.png", "url": "https://chandanchaudhary.com/images/logos/solvetude-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/sp-tech-logo.png", "url": "https://chandanchaudhary.com/images/logos/sp-tech-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/sptech-logo.png", "url": "https://chandanchaudhary.com/images/logos/sptech-logo.png", "type": "png", "usage": "client-logo-duplicate" },
+      { "path": "/images/logos/triviaroo-logo.png", "url": "https://chandanchaudhary.com/images/logos/triviaroo-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/turito-logo.png", "url": "https://chandanchaudhary.com/images/logos/turito-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/venngage-logo.png", "url": "https://chandanchaudhary.com/images/logos/venngage-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/venngage-logo-white.png", "url": "https://chandanchaudhary.com/images/logos/venngage-logo-white.png", "type": "png", "usage": "client-logo-light-variant" },
+      { "path": "/images/logos/wiingy-logo.png", "url": "https://chandanchaudhary.com/images/logos/wiingy-logo.png", "type": "png", "usage": "client-logo" },
+      { "path": "/images/logos/yupptv-logo.png", "url": "https://chandanchaudhary.com/images/logos/yupptv-logo.png", "type": "png", "usage": "client-logo" }
+    ],
+    "unused": [
+      { "path": "/next.svg", "url": "https://chandanchaudhary.com/next.svg", "type": "svg", "usage": "nextjs-default-unused" },
+      { "path": "/vercel.svg", "url": "https://chandanchaudhary.com/vercel.svg", "type": "svg", "usage": "nextjs-default-unused" },
+      { "path": "/file.svg", "url": "https://chandanchaudhary.com/file.svg", "type": "svg", "usage": "nextjs-default-unused" },
+      { "path": "/globe.svg", "url": "https://chandanchaudhary.com/globe.svg", "type": "svg", "usage": "nextjs-default-unused" },
+      { "path": "/window.svg", "url": "https://chandanchaudhary.com/window.svg", "type": "svg", "usage": "nextjs-default-unused" },
+      { "path": "/apple-touch-icon.svg", "url": "https://chandanchaudhary.com/apple-touch-icon.svg", "type": "svg", "usage": "apple-touch-icon-svg-variant" },
+      { "path": "/favicon-16x16.svg", "url": "https://chandanchaudhary.com/favicon-16x16.svg", "type": "svg", "usage": "favicon-svg-variant" },
+      { "path": "/favicon-32x32.svg", "url": "https://chandanchaudhary.com/favicon-32x32.svg", "type": "svg", "usage": "favicon-svg-variant" }
+    ]
+  },
+  "_meta": {
+    "generatedAt": "2026-03-28",
+    "themeDefault": "dark",
+    "designSystemName": "Midnight & Violet",
+    "stack": "Next.js 16, Tailwind CSS v4, React 19",
+    "filesScanned": [
+      "src/app/globals.css",
+      "src/app/layout.tsx",
+      "src/lib/metadata.ts",
+      "next.config.ts",
+      "package.json",
+      "public/ (full recursive listing)"
+    ],
+    "unresolved": [
+      "OG image is dynamically generated at /og route — no static PNG exists in public/",
+      "No standalone logo PNG/SVG for the Chandan Chaudhary brand (favicon.svg used as proxy)",
+      "Breakpoints are Tailwind v4 defaults — no tailwind.config.ts with overrides exists",
+      "sp-tech-logo.png and sptech-logo.png appear to be duplicates — verify before use"
+    ]
+  }
+}
